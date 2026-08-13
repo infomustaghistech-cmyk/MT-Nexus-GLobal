@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { Outlet, useNavigate, Link } from 'react-router-dom';
 import videoBg from '@/assets/15254965_1920_1080_24fps.mp4';
 import { ArrowUpRight, Zap, ShoppingBag, Palette, Globe, Film, Layout, ArrowRight } from 'lucide-react';
+import LazyVideo from '../Componenet/LazyVideo';
 
 /* ─────────────────────────────────────────────────
    GLOBAL VIDEO BACKGROUND (Aligned with Hero Theme)

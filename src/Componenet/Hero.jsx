@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, ArrowRight, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import frontImg from '../assets/Front.PNG';
 import heroVideo from '../assets/3141208-uhd_3840_2160_25fps.mp4';
+import LazyVideo from './LazyVideo';
 
 /* ─────────────────────────────────────────────────
    GLOBAL HERO BACKGROUND
@@ -11,15 +12,7 @@ import heroVideo from '../assets/3141208-uhd_3840_2160_25fps.mp4';
 export const HeroBackground = () => {
   return (
     <div className="absolute inset-0 z-0 w-full h-full pointer-events-none overflow-hidden bg-[#050a15]">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
-      >
-        <source src={heroVideo} type="video/mp4" />
-      </video>
+      <LazyVideo src={heroVideo} className="absolute inset-0 w-full h-full object-cover opacity-40" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#050a15]/60 via-transparent to-[#04070f]/80"></div>
     </div>
   );

@@ -7,7 +7,8 @@ import { supabase } from '../supabaseClient';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import videoBg from '../assets/15254965_1920_1080_24fps.mp4'; 
+import videoBg from '../assets/15254965_1920_1080_24fps.mp4';
+import LazyVideo from '../Componenet/LazyVideo'; 
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -55,14 +56,7 @@ const Portfolio = () => {
       
       {/* ─── FIXED VIDEO BACKGROUND (FIXED LAYER STACKING) ─── */}
       <div className="fixed inset-0 -z-10 w-full h-full bg-black">
-        <video 
-          src={videoBg} 
-          playsInline 
-          autoPlay 
-          muted 
-          loop 
-          className="w-full h-full object-cover opacity-50" 
-        />
+        <LazyVideo src={videoBg} className="w-full h-full object-cover opacity-50" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black/90" />
       </div>
 

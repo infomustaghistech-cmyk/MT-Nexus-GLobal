@@ -5,6 +5,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
 import videoBg from '../assets/15254965_1920_1080_24fps.mp4';
 import { supabase } from '../supabaseClient';
+import LazyVideo from '../Componenet/LazyVideo';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -54,7 +55,7 @@ const Projact_wordpress = () => {
       
       {/* Background Video Structure */}
       <div className="fixed inset-0 -z-10 w-full h-full bg-[#0a0a0a]">
-        <video src={videoBg} playsInline autoPlay muted loop className="w-full h-full object-cover opacity-40" />
+        <LazyVideo src={videoBg} className="w-full h-full object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-[#0a0a0a]" />
       </div>
 

@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 // Video background import
-import videoBg from '@/assets/15254965_1920_1080_24fps.mp4'; 
+import videoBg from '@/assets/15254965_1920_1080_24fps.mp4';
+import LazyVideo from '../Componenet/LazyVideo'; 
 
 const WordPressSolutions = () => {
   const navigate = useNavigate();
@@ -39,11 +40,7 @@ const WordPressSolutions = () => {
       </div>
       {/* --- VIDEO BACKGROUND --- */}
       <div className="fixed inset-0 -z-10 w-full h-full">
-        <video 
-          src={videoBg} 
-          playsInline autoPlay muted loop 
-          className="w-full h-full object-cover brightness-[0.3]" 
-        />
+        <LazyVideo src={videoBg} className="w-full h-full object-cover brightness-[0.3]" />
       </div>
 
       <div className="max-w-7xl mx-auto">

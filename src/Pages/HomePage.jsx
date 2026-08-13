@@ -7,6 +7,7 @@ import TestimonialSection from '../Componenet/TestimonialSection';
 import SeoSection from '../Componenet/SeoSection';
 import BlogSection from '../Componenet/BlogSection';
 import techVideoBg from '../assets/15254965_1920_1080_24fps.mp4';
+import LazyVideo from '../Componenet/LazyVideo';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },

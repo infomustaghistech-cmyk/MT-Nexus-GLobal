@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { UserCheck, Users, ShieldCheck, Scale, Handshake } from 'lucide-react';
-import videoBg from '@/assets/15254965_1920_1080_24fps.mp4'; // Ensure path is correct
+import videoBg from '@/assets/15254965_1920_1080_24fps.mp4';
+import LazyVideo from '../Componenet/LazyVideo'; // Ensure path is correct
 // Import your images
 import founderImg from "../assets/WhatsApp_Image_2026-03-11_at_3.33.52_AM-removebg-preview.png";
 import topImg from "../assets/istockphoto-1961324209-1024x1024.jpg";
