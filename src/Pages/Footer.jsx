@@ -24,10 +24,10 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-[#050505] text-white h-screen min-h-[700px] flex flex-col border-t border-white/[0.05] overflow-hidden">
+    <footer className="relative bg-[#162c54] text-white flex flex-col border-t border-[#2a457a] overflow-hidden pt-16 md:pt-20">
       {/* Background Glows */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl w-full mx-auto px-6 md:px-12 relative z-10 flex flex-col h-full">
         
@@ -58,6 +58,7 @@ const Footer = () => {
               <form className="relative flex items-center" onSubmit={(e) => e.preventDefault()}>
                 <input
                   type="email"
+                  required
                   placeholder="Enter your email"
                   className="w-full bg-black/50 border border-white/10 rounded-xl py-3 px-4 text-base text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 transition-colors"
                 />
@@ -69,7 +70,7 @@ const Footer = () => {
           </div>
 
           {/* ─── Right Section: Links (Takes up 7 cols) ─── */}
-          <div className="md:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-10">
+          <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
 
             {/* Products Column */}
             <div>

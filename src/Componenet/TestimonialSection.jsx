@@ -87,9 +87,9 @@ const testimonialsData = [
 
 const TestimonialCard = ({ testimonial }) => {
   return (
-    <div className="w-full max-w-4xl mx-auto shrink-0 bg-[#1f1f22] rounded-[24px] p-8 md:p-10 border border-[#2e2e33] hover:border-[#0066ff]/60 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_30px_60px_rgba(0,102,255,0.15)] transition-all duration-500 group relative overflow-hidden flex flex-col justify-between select-none">
+    <div className="w-full max-w-4xl mx-auto shrink-0 bg-[#0a0f1d]/50 backdrop-blur-md rounded-[24px] p-8 md:p-10 border border-black hover:border-black hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_30px_60px_rgba(34,211,238,0.15)] transition-all duration-500 group relative overflow-hidden flex flex-col justify-between select-none">
       {/* Decorative Subtle Glowing Corner */}
-      <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#0066ff]/10 rounded-full blur-xl group-hover:bg-[#0066ff]/20 transition-all duration-500 pointer-events-none" />
+      <div className="absolute -top-10 -right-10 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl group-hover:bg-cyan-500/20 transition-all duration-500 pointer-events-none" />
 
       <div>
         {/* Rating Stars & Quote Icon */}
@@ -99,22 +99,22 @@ const TestimonialCard = ({ testimonial }) => {
               <Star key={i} size={16} fill="#ffc107" stroke="#ffc107" />
             ))}
           </div>
-          <Quote size={24} className="text-white/10 group-hover:text-[#0066ff]/40 transition-colors duration-300" />
+          <Quote size={24} className="text-white/10 group-hover:text-cyan-400/40 transition-colors duration-300" />
         </div>
 
         {/* Quote Text */}
-        <p className="text-[#d1d5db] text-sm leading-relaxed font-normal mb-6">
+        <p className="text-white text-sm leading-relaxed font-normal mb-6">
           "{testimonial.quote}"
         </p>
       </div>
 
       {/* Card Footer: Author Left, Company Right */}
-      <div className="flex items-center justify-between pt-4 border-t border-white/5">
+      <div className="flex items-center justify-between pt-4 border-t border-black">
         {/* Author Avatar + Name */}
         <div className="flex items-center gap-3">
           <div
             className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-base shadow-md shrink-0"
-            style={{ backgroundColor: testimonial.avatarBg || '#0066ff' }}
+            style={{ backgroundColor: testimonial.avatarBg || '#06b6d4' }} /* using cyan-500 fallback */
           >
             {testimonial.initial || testimonial.name.charAt(0)}
           </div>
@@ -122,13 +122,13 @@ const TestimonialCard = ({ testimonial }) => {
             <h4 className="text-white font-semibold text-sm leading-snug">
               {testimonial.name}
             </h4>
-            <p className="text-[11px] text-[#888888] font-medium">{testimonial.role}</p>
+            <p className="text-[11px] text-white font-medium">{testimonial.role}</p>
           </div>
         </div>
 
         {/* Company Name (Subtle Grey at Bottom Right) */}
         <div className="text-right">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-[#888888]">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-white">
             {testimonial.company}
           </span>
         </div>
@@ -139,22 +139,19 @@ const TestimonialCard = ({ testimonial }) => {
 
 const TestimonialSection = () => {
   return (
-    <section className="relative w-full bg-[#121212] py-20 overflow-hidden">
+    <section className="relative w-full py-20 overflow-hidden bg-transparent">
       {/* Ambient Lighting Orbs */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[35rem] h-[25rem] bg-[#0066ff]/10 rounded-full blur-[140px] pointer-events-none -z-0" />
-      <div className="absolute bottom-10 right-1/4 w-[25rem] h-[20rem] bg-[#ffc107]/5 rounded-full blur-[120px] pointer-events-none -z-0" />
-
-      {/* Fade Gradients on Edges for Smooth Overflow Mask */}
-      <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#121212] to-transparent z-20 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#121212] to-transparent z-20 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[35rem] h-[25rem] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none -z-0" />
+      <div className="absolute bottom-10 right-1/4 w-[25rem] h-[20rem] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none -z-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 mb-16 text-center">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0066ff]/10 border border-[#0066ff]/20 text-[#0066ff] text-xs font-semibold tracking-wider uppercase mb-4">
+        <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.35em] text-cyan-300 mb-4">
           <Sparkles size={14} />
           <span>Client Reviews & Feedback</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-          What Our Clients Say About Us
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-white mb-2">
+          What Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Clients</span> Say{' '}
+          <em className="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-purple-500 pr-1">About Us</em>
         </h2>
         <p className="text-[#888888] text-base md:text-lg mt-3 max-w-xl mx-auto">
           Explore real reviews from brands and leaders we've worked with around the globe.

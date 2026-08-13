@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import videoBg from '@/assets/15254965_1920_1080_24fps.mp4';
 
 import { motion } from 'framer-motion';
 
 const WebsiteCustomization = () => {
+  const navigate = useNavigate();
+
   // Project Data (Screenshot style cards)
   const projects = [
     {
@@ -54,6 +57,13 @@ const WebsiteCustomization = () => {
 
       <div className="max-w-7xl mx-auto">
         
+        <button 
+          onClick={() => navigate(-1)} 
+          className="mb-8 flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold tracking-wider transition-colors"
+        >
+          <span className="text-xl">←</span> GO BACK
+        </button>
+
         {/* Main Heading & Client Instructions */}
         <div className=" p-8 lg:p-12 rounded-3xl  mb-16">
           <motion.h1 

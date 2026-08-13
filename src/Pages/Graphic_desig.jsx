@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 // Assuming the same video path as your App_Customization component
 import videoBg from '@/assets/15254965_1920_1080_24fps.mp4'; 
 
 const GraphicDesign = () => {
+  const navigate = useNavigate();
   // 1. Graphic Design Requirements Array
   const requirements = [
     {
@@ -30,6 +32,11 @@ const GraphicDesign = () => {
 
   return (
     <div className="min-h-screen pt-28 pb-16 px-6 font-sans relative">
+      <div className="relative z-50 w-full max-w-7xl mx-auto mb-6 mt-8 md:mt-4">
+        <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold tracking-wider transition-colors bg-black/60 p-2 md:px-4 rounded-lg backdrop-blur-md border border-white/10">
+          <span className="text-xl">←</span> GO BACK
+        </button>
+      </div>
       {/* --- VIDEO BACKGROUND --- */}
       <div className="fixed inset-0 -z-10 w-full h-full">
         <video 

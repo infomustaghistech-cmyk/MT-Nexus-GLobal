@@ -47,6 +47,11 @@ const Projact_graphic = () => {
   return (
     // FIX: Removed solid bg color
     <div className="relative text-white min-h-screen font-sans px-4 py-16 overflow-hidden">
+      <div className="relative z-50 w-full max-w-7xl mx-auto mb-6 mt-8 md:mt-4">
+        <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold tracking-wider transition-colors bg-black/60 p-2 md:px-4 rounded-lg backdrop-blur-md border border-white/10">
+          <span className="text-xl">←</span> GO BACK
+        </button>
+      </div>
       
       {/* Background Video with Cinematic Overlay */}
       <div className="fixed inset-0 -z-10 w-full h-full bg-[#0a0a0a]">

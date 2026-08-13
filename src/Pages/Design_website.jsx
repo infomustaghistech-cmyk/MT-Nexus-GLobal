@@ -1,14 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navebar from '../Componenet/Navbar';
 
 const Design_website = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <Navebar />
 
     <div className="relative min-h-[150vh] bg-[#0a0a0a] overflow-x-hidden font-serif">
+      <div className="relative z-50 w-full max-w-7xl mx-auto mb-6 mt-8 md:mt-4">
+        <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold tracking-wider transition-colors bg-black/60 p-2 md:px-4 rounded-lg backdrop-blur-md border border-white/10">
+          <span className="text-xl">←</span> GO BACK
+        </button>
+      </div>
       
       {/* 1. Static Background (Pots/Ceramics) */}
       <div className="fixed inset-0 z-0">

@@ -11,10 +11,10 @@ import heroVideo from '../assets/3141208-uhd_3840_2160_25fps.mp4';
 export const HeroBackground = () => {
   return (
     <div className="absolute inset-0 z-0 w-full h-full pointer-events-none overflow-hidden bg-[#050a15]">
-      <video 
-        autoPlay 
-        loop 
-        muted 
+      <video
+        autoPlay
+        loop
+        muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover opacity-40"
       >
@@ -177,7 +177,7 @@ const Carousel = () => {
 
       {/* Nav & Dots */}
       <div className="absolute inset-x-0 -bottom-10 sm:-bottom-12 flex items-center justify-center gap-6 z-20">
-        <button onClick={prev} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-black/20 backdrop-blur-sm flex items-center justify-center hover:bg-white hover:text-black transition-all">
+        <button onClick={prev} className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-black/20 backdrop-blur-sm flex items-center justify-center hover:bg-white hover:text-black transition-all">
           <ChevronLeft size={18} />
         </button>
 
@@ -197,7 +197,7 @@ const Carousel = () => {
           ))}
         </div>
 
-        <button onClick={next} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-black/20 backdrop-blur-sm flex items-center justify-center hover:bg-white hover:text-black transition-all">
+        <button onClick={next} className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-black/20 backdrop-blur-sm flex items-center justify-center hover:bg-white hover:text-black transition-all">
           <ChevronRight size={18} />
         </button>
       </div>
@@ -263,7 +263,7 @@ const HeroSection = () => {
     <>
       {/* PROFESSIONAL INDUSTRY STANDARD FONTS */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
         :root {
           --gold: #c9a96e;
@@ -282,7 +282,7 @@ const HeroSection = () => {
           padding: 16px 42px;
           font-family: 'JetBrains Mono', monospace;
           font-size: 11px;
-          font-weight: 700;
+          font-weight: 800;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: black;
@@ -314,7 +314,7 @@ const HeroSection = () => {
           padding: 16px 36px;
           font-family: 'JetBrains Mono', monospace;
           font-size: 11px;
-          font-weight: 500;
+          font-weight: 800;
           letter-spacing: 0.15em;
           text-transform: uppercase;
           color: rgba(255,255,255,0.8);
@@ -411,20 +411,18 @@ const HeroSection = () => {
         {/* ═══════════════════════════════════════════
             SECTION 1 — HERO FOLD
         ═══════════════════════════════════════════ */}
-        <section className="relative w-full h-screen min-h-[650px] flex flex-col items-center justify-center text-center px-4 pt-32 pb-24 overflow-hidden">
+        <section className="relative w-full h-[100dvh] min-h-[620px] flex flex-col items-center justify-center text-center px-4 pb-16 sm:pb-20 pt-8 overflow-hidden">
           {/* ─── HERO BACKGROUND ─── */}
           <HeroBackground />
 
-          <div className="relative z-10 flex flex-col items-center justify-center w-full">
-            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="section-label text-cyan-400 before:bg-cyan-400 mb-6 sm:mb-8">
-              Digital Agency Studio
-            </motion.div>
+          <div className="relative z-10 flex flex-col items-center justify-center w-full mt-12 sm:mt-16">
+
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
-              className="text-[40px] sm:text-6xl md:text-7xl lg:text-[78px] font-extrabold tracking-tight leading-[1.05] mb-6 max-w-5xl drop-shadow-2xl text-white"
+              className="text-[36px] sm:text-5xl md:text-6xl lg:text-[70px] font-extrabold tracking-tight leading-[1.05] mb-4 sm:mb-6 max-w-5xl drop-shadow-2xl text-white"
             >
               Turning <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-purple-500">Ideas</span> into<br />
               <em className="font-serif-accent font-normal italic text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 pr-2">
@@ -435,14 +433,14 @@ const HeroSection = () => {
 
             <motion.p
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-white text-sm sm:text-base md:text-lg font-medium max-w-lg mb-10 leading-relaxed"
+              className="text-white text-sm sm:text-base md:text-lg font-medium max-w-lg mb-6 sm:mb-8 leading-relaxed"
             >
               We craft premium digital experiences that drive results — from brand identity to full-stack web solutions.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.7 }}
-              className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center"
+              className="flex flex-col sm:flex-row gap-4 items-center"
             >
               <Link to="/contact" className="btn-primary w-full sm:w-auto justify-center">
                 <span>Start a Project</span>
@@ -457,7 +455,7 @@ const HeroSection = () => {
             {/* Stats row */}
             <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}
-              className="flex flex-wrap gap-8 sm:gap-16 md:gap-24 mt-10 sm:mt-14 pt-8 sm:pt-10 border-t border-white/[0.08] w-full max-w-3xl justify-center"
+              className="flex flex-wrap gap-8 sm:gap-16 md:gap-24 mt-6 pt-5 sm:mt-8 sm:pt-6 border-t border-white/[0.08] w-full max-w-3xl justify-center"
             >
               <StatCard number="120+" label="Projects Done" delay={1.0} />
               <StatCard number="98%" label="Satisfaction" delay={1.1} />
@@ -466,8 +464,8 @@ const HeroSection = () => {
           </div>
 
           {/* Scroll indicator */}
-          <div className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-indicator hidden sm:flex z-10">
-            <div className="w-px h-10 bg-gradient-to-b from-transparent via-white/40 to-white/80" />
+          <div className="absolute bottom-12 sm:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-indicator hidden sm:flex z-10">
+            <div className="w-px h-8 bg-gradient-to-b from-transparent via-white/40 to-white/80" />
             <span className="text-[9px] tracking-[0.3em] text-white/40 uppercase font-mono font-bold">Scroll</span>
           </div>
 
@@ -508,36 +506,7 @@ const HeroSection = () => {
           <ClientMarquee />
         </section>
 
-        {/* ═══════════════════════════════════════════
-            SECTION 5 — CTA BANNER
-        ═══════════════════════════════════════════ */}
-        <section className="py-20 sm:py-32 px-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-4xl mx-auto text-center border border-white/[0.08] rounded-3xl p-10 sm:p-20 relative overflow-hidden bg-white/[0.02] backdrop-blur-xl shadow-2xl"
-          >
-            {/* Soft background glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[400px] bg-cyan-500/20 blur-[100px] pointer-events-none rounded-full" />
 
-            <div className="relative z-10">
-              <div className="section-label text-cyan-400 before:bg-cyan-400 justify-center mb-6 sm:mb-8">Ready to Begin?</div>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
-                Let's Build Something<br />
-                <em className="font-serif-accent font-normal italic text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 leading-tight">Extraordinary</em>
-              </h2>
-              <p className="text-white/50 text-sm sm:text-base font-medium mb-10 max-w-md mx-auto leading-relaxed">
-                Share your vision with us. We'll handle the rest — from concept to launch.
-              </p>
-              <Link to="/contact" className="btn-primary w-full sm:w-auto justify-center">
-                <span>Get Free Consultation</span>
-                <ArrowRight size={14} className="relative z-10" />
-              </Link>
-              <p className="mt-6 text-[9px] sm:text-[10px] tracking-[0.2em] text-white/30 uppercase font-mono font-semibold">
-                No commitment required
-              </p>
-            </div>
-          </motion.div>
-        </section>
 
       </div>
     </>

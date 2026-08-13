@@ -28,6 +28,7 @@ import Projact_wordpress from './Pages/Project_wordpress'
 import Projact_shopifly from './Pages/Project_shopify'
 import Projact_video from './Pages/Project_video'
 import Projact_graphic from './Pages/Project_graphic'
+import CTABanner from './Componenet/CTABanner'
 
 
 const ScrollToTop = () => {
@@ -46,42 +47,44 @@ const ScrollToTop = () => {
 const App = () => {
   return (
     <BrowserRouter>
-    <ScrollToTop/>
+      <ScrollToTop />
 
-<Navbar />
+      <Navbar />
       <Routes>
         <Route path="/design-website" element={<Design_website />} />
         <Route path="/" element={<Home />} />
         <Route path="/technologies" element={<Home />} />
+        <Route path="/blogs" element={<Home />} />
         <Route path="/get-started" element={<Get_start />} />
-        <Route path='/templates' element={<Template/>}/>
-        <Route path='/about' element={<AboutPage/>}/>
-        <Route path='/services' element={<ServicesPage/>}/>
+        <Route path='/templates' element={<Template />} />
+        <Route path='/about' element={<AboutPage />} />
+        <Route path='/services' element={<ServicesPage />} />
         <Route path="/admin" element={<Admin />} />
-        
-        <Route path='/services/web_customization' element={<WebsiteCustomization/>}/>
-        <Route path='/services/app_customization' element={<App_Customization/>}/>
-        <Route path='/services/graphic-design' element={<GraphicDesign/>}/>
-        <Route path='/services/wordpress' element={<WordPressSolutions/>}/>
-        <Route path='/services/video-editing' element={<VideoEditing/>}/>
-        <Route path='/services/shopify' element={<ShopifyStore/>}/>
-        <Route path='/services/ui-ux-designs' element={<UIUXDesign/>}/>
-        
-        <Route path='/projects' element={<Portfolio/>}/>
-        <Route path='/projects/website' element={<Projact_web/>}/>
-        <Route path='/projects/app' element={<Projact_app/>}/>
-        <Route path='/projects/wordpress' element={<Projact_wordpress/>}/>
-        <Route path='/projects/shopify' element={<Projact_shopifly/>}/>
-        <Route path='/projects/video' element={<Projact_video/>}/>
-        <Route path='/projects/graphic' element={<Projact_graphic/>}/>
+
+        <Route path='/services/web_customization' element={<WebsiteCustomization />} />
+        <Route path='/services/app_customization' element={<App_Customization />} />
+        <Route path='/services/graphic-design' element={<GraphicDesign />} />
+        <Route path='/services/wordpress' element={<WordPressSolutions />} />
+        <Route path='/services/video-editing' element={<VideoEditing />} />
+        <Route path='/services/shopify' element={<ShopifyStore />} />
+        <Route path='/services/ui-ux-designs' element={<UIUXDesign />} />
+
+        <Route path='/projects' element={<Portfolio />} />
+        <Route path='/projects/website' element={<Projact_web />} />
+        <Route path='/projects/app' element={<Projact_app />} />
+        <Route path='/projects/wordpress' element={<Projact_wordpress />} />
+        <Route path='/projects/shopify' element={<Projact_shopifly />} />
+        <Route path='/projects/video' element={<Projact_video />} />
+        <Route path='/projects/graphic' element={<Projact_graphic />} />
 
 
-        <Route path='/contact' element={<ContactPage/>}/>
-        <Route path='/feedback' element={<FeedbackPage/>}/>
+        <Route path='/contact' element={<ContactPage />} />
+        <Route path='/feedback' element={<FeedbackPage />} />
 
 
       </Routes>
-          <Footer/>
+      <CTABanner />
+      <Footer />
 
     </BrowserRouter>
   )

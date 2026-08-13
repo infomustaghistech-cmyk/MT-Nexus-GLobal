@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const slides = [
@@ -12,6 +13,7 @@ const slides = [
 ];
 
 export default function GrowBusiness() {
+  const navigate = useNavigate();
   const [index, setIndex] = useState(0);
   const scrollRef = useRef(null);
 
@@ -25,6 +27,11 @@ export default function GrowBusiness() {
 
   return (
     <div className="w-full  py-16 overflow-hidden select-none">
+      <div className="relative z-50 w-full max-w-7xl mx-auto mb-6 mt-8 md:mt-4">
+        <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold tracking-wider transition-colors bg-black/60 p-2 md:px-4 rounded-lg backdrop-blur-md border border-white/10">
+          <span className="text-xl">←</span> GO BACK
+        </button>
+      </div>
       {/* 1. Header Section */}
       <div className="text-center mb-10 px-4">
         <h1 className="text-[56px] font-normal text-white mb-2 tracking-tight">

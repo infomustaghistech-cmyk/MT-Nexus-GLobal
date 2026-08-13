@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Sparkles, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Navebar from '../Componenet/Navbar';
 
 const Template = () => {
+  const navigate = useNavigate();
   const [selectedTypes, setSelectedTypes] = useState(['Online Store']);
 
   const templates = [
@@ -17,6 +19,11 @@ const Template = () => {
       <Navebar />
     
     <div className="min-h-screen bg-[#FDFDFD] text-[#121212] font-sans">
+      <div className="relative z-50 w-full max-w-7xl mx-auto mb-6 mt-8 md:mt-4">
+        <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-cyan-500 hover:text-cyan-400 font-bold tracking-wider transition-colors bg-white/80 p-2 md:px-4 rounded-lg backdrop-blur-md border border-gray-200 shadow-md">
+          <span className="text-xl">←</span> GO BACK
+        </button>
+      </div>
       {/* 1. Header Section (Image 1 jaisa) */}
       <header className="px-12 pt-24 pb-16 border-b border-gray-100 flex flex-col md:flex-row justify-between items-start gap-8">
         <h1 className="text-6xl md:text-8xl font-medium tracking-tight leading-[0.9] max-w-3xl">
