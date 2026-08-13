@@ -6,6 +6,7 @@ import HeroSection from '../Componenet/Hero';
 import TestimonialSection from '../Componenet/TestimonialSection';
 import SeoSection from '../Componenet/SeoSection';
 import BlogSection from '../Componenet/BlogSection';
+import techVideoBg from '../assets/15254965_1920_1080_24fps.mp4';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -228,6 +229,7 @@ const processSteps = [
     title: 'Ideate',
     description: 'We analyze your vision to align the roadmap with your goals.',
     image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80',
+    titleColor: 'text-cyan-400',
     accent: 'from-cyan-500 to-blue-600',
   },
   {
@@ -236,6 +238,7 @@ const processSteps = [
     title: 'Design',
     description: 'Creating an MVP that balances design and core functionality.',
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+    titleColor: 'text-emerald-400',
     accent: 'from-emerald-500 to-cyan-600',
   },
   {
@@ -244,6 +247,7 @@ const processSteps = [
     title: 'Develop',
     description: 'Building end-to-end solutions with focus on architecture and agile delivery.',
     image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80',
+    titleColor: 'text-violet-400',
     accent: 'from-violet-500 to-fuchsia-600',
   },
   {
@@ -252,6 +256,7 @@ const processSteps = [
     title: 'Test',
     description: 'Ensuring high quality through comprehensive testing.',
     image: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&q=80',
+    titleColor: 'text-amber-400',
     accent: 'from-amber-500 to-yellow-600',
   },
   {
@@ -260,6 +265,7 @@ const processSteps = [
     title: 'Launch',
     description: 'Executing a smooth product launch and post-launch support.',
     image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=80',
+    titleColor: 'text-rose-400',
     accent: 'from-rose-500 to-orange-600',
   },
   {
@@ -268,6 +274,7 @@ const processSteps = [
     title: 'Support',
     description: 'Providing ongoing support and enhancements.',
     image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
+    titleColor: 'text-sky-400',
     accent: 'from-sky-500 to-indigo-600',
   },
 ];
@@ -383,8 +390,17 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="technologies" className="px-6 md:px-10 lg:px-16 pb-20 md:pb-28">
-        <div className="mx-auto max-w-7xl rounded-[36px] border border-cyan-400/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.14),transparent_35%),linear-gradient(135deg,#0a0f1d_0%,#050816_100%)] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl md:p-8 lg:p-10">
+      <section id="technologies" className="relative overflow-hidden px-6 md:px-10 lg:px-16 py-20 md:py-28">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 z-0 h-full w-full object-cover opacity-25 mix-blend-screen"
+          src={techVideoBg}
+        />
+        <div className="absolute inset-0 z-0 bg-[#050816]/60" />
+        <div className="relative z-10 mx-auto max-w-7xl rounded-[36px] border border-cyan-400/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.14),transparent_35%),linear-gradient(135deg,#0a0f1d_0%,#050816_100%)] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl md:p-8 lg:p-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -396,10 +412,10 @@ const Home = () => {
               <span className="h-2 w-2 rounded-full bg-cyan-400" />
               Tech Stack
             </motion.div>
-            <motion.h2 variants={slideInLeft} className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <motion.h2 variants={slideInLeft} className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Technologies we use
             </motion.h2>
-            <motion.p variants={fadeInUp} className="mt-3 max-w-3xl text-sm leading-7 text-gray-400 sm:text-base">
+            <motion.p variants={fadeInUp} className="mt-4 max-w-4xl text-base leading-relaxed text-gray-300 sm:text-lg lg:text-xl">
               Hire from our pool of 350+ specialized experts in web, mobile, and software engineering, specializing in the latest technologies and frameworks, ready to scale your development teams effortlessly.
             </motion.p>
           </motion.div>
@@ -487,7 +503,7 @@ const Home = () => {
 
       <section id="process-section" className="px-6 md:px-10 lg:px-16 pb-20 md:pb-28">
         <div className="mx-auto max-w-7xl rounded-[36px] border border-cyan-400/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.12),transparent_30%),linear-gradient(135deg,#0a0f1d_0%,#050816_100%)] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl md:p-8 lg:p-10">
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -519,13 +535,13 @@ const Home = () => {
                     className={`rounded-[24px] border p-5 transition-all duration-300 ${active ? 'border-cyan-400/30 bg-cyan-400/10 shadow-[0_0_30px_rgba(34,211,238,0.12)]' : 'border-white/10 bg-white/[0.03]'}`}
                   >
                     <div className="flex items-start gap-4">
-                      <div className={`mt-1 h-full w-[2px] rounded-full bg-gradient-to-b ${active ? 'from-cyan-400 to-emerald-400' : 'from-white/10 to-transparent'}`} />
+                      <div className={`mt-1 h-full w-[3px] rounded-full bg-gradient-to-b ${active ? 'from-cyan-400 to-emerald-400' : 'from-white/10 to-transparent'}`} />
                       <div className="flex-1">
-                        <p className="text-[11px] uppercase tracking-[0.25em] text-gray-500">{step.number}</p>
-                        <h3 className={`mt-2 text-3xl font-semibold tracking-tight ${active ? 'text-cyan-300' : 'text-white'}`}>
+                        <p className="text-sm uppercase tracking-[0.25em] text-gray-400">{step.number}</p>
+                        <h3 className={`mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight ${active ? step.titleColor || 'text-cyan-300' : 'text-white'}`}>
                           {step.title}
                         </h3>
-                        <p className="mt-3 text-base leading-7 text-gray-400">{step.description}</p>
+                        <p className="mt-8 text-xl sm:text-2xl leading-relaxed text-gray-300">{step.description}</p>
                       </div>
                     </div>
                   </div>
@@ -544,11 +560,11 @@ const Home = () => {
                   alt={processSteps[activeProcess].title}
                   className="h-[420px] w-full rounded-[24px] object-cover"
                 />
-                <div className="mt-3 flex items-center justify-between rounded-full border border-cyan-400/10 bg-black/45 px-4 py-3 text-sm text-white/80 backdrop-blur-sm">
-                  <span className="font-semibold uppercase tracking-[0.25em] text-cyan-300">
+                <div className="mt-4 flex items-center justify-between rounded-full border border-cyan-400/10 bg-black/45 px-6 py-4 text-lg text-white/80 backdrop-blur-sm">
+                  <span className="font-bold uppercase tracking-[0.25em] text-cyan-300">
                     {processSteps[activeProcess].number}
                   </span>
-                  <span className="text-white">— {processSteps[activeProcess].title.toUpperCase()}</span>
+                  <span className="text-white font-medium">— {processSteps[activeProcess].title.toUpperCase()}</span>
                 </div>
               </div>
             </div>

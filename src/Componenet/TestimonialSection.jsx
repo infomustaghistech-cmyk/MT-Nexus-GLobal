@@ -87,7 +87,7 @@ const testimonialsData = [
 
 const TestimonialCard = ({ testimonial }) => {
   return (
-    <div className="w-[320px] sm:w-[380px] shrink-0 bg-[#1f1f22] rounded-[20px] p-6 border border-[#2e2e33] hover:border-[#0066ff]/50 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-all duration-300 group overflow-hidden flex flex-col justify-between select-none">
+    <div className="w-full max-w-4xl mx-auto shrink-0 bg-[#1f1f22] rounded-[24px] p-8 md:p-10 border border-[#2e2e33] hover:border-[#0066ff]/60 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_30px_60px_rgba(0,102,255,0.15)] transition-all duration-500 group relative overflow-hidden flex flex-col justify-between select-none">
       {/* Decorative Subtle Glowing Corner */}
       <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#0066ff]/10 rounded-full blur-xl group-hover:bg-[#0066ff]/20 transition-all duration-500 pointer-events-none" />
 
@@ -138,16 +138,6 @@ const TestimonialCard = ({ testimonial }) => {
 };
 
 const TestimonialSection = () => {
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Split testimonials into 2 rows for multi-line marquee effect
-  const row1 = testimonialsData.slice(0, 4);
-  const row2 = testimonialsData.slice(4, 8);
-
-  // Double arrays to ensure continuous 100% infinite scroll
-  const marqueeRow1 = [...row1, ...row1, ...row1, ...row1];
-  const marqueeRow2 = [...row2, ...row2, ...row2, ...row2];
-
   return (
     <section className="relative w-full bg-[#121212] py-20 overflow-hidden">
       {/* Ambient Lighting Orbs */}
@@ -158,7 +148,7 @@ const TestimonialSection = () => {
       <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#121212] to-transparent z-20 pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#121212] to-transparent z-20 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 mb-12 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 mb-16 text-center">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0066ff]/10 border border-[#0066ff]/20 text-[#0066ff] text-xs font-semibold tracking-wider uppercase mb-4">
           <Sparkles size={14} />
           <span>Client Reviews & Feedback</span>
@@ -171,51 +161,11 @@ const TestimonialSection = () => {
         </p>
       </div>
 
-      {/* Infinite Horizontal Lines (Marquee Rows) */}
-      <div
-        className="flex flex-col gap-6 relative z-10"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        {/* ROW 1: Scrolling Left */}
-        <div className="overflow-hidden flex w-full">
-          <motion.div
-            className="flex gap-6 w-max"
-            animate={{ x: isPaused ? '0%' : ['0%', '-50%'] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: 'loop',
-                duration: 35,
-                ease: 'linear',
-              },
-            }}
-          >
-            {marqueeRow1.map((testimonial, idx) => (
-              <TestimonialCard key={`r1-${idx}`} testimonial={testimonial} />
-            ))}
-          </motion.div>
-        </div>
-
-        {/* ROW 2: Scrolling Right */}
-        <div className="overflow-hidden flex w-full">
-          <motion.div
-            className="flex gap-6 w-max"
-            animate={{ x: isPaused ? '0%' : ['-50%', '0%'] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: 'loop',
-                duration: 40,
-                ease: 'linear',
-              },
-            }}
-          >
-            {marqueeRow2.map((testimonial, idx) => (
-              <TestimonialCard key={`r2-${idx}`} testimonial={testimonial} />
-            ))}
-          </motion.div>
-        </div>
+      {/* 1 Column Layout */}
+      <div className="flex flex-col gap-8 relative z-10 w-full px-6">
+        {testimonialsData.map((testimonial, idx) => (
+          <TestimonialCard key={idx} testimonial={testimonial} />
+        ))}
       </div>
     </section>
   );

@@ -3,51 +3,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ArrowRight, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import frontImg from '../assets/Front.PNG';
+import heroVideo from '../assets/3141208-uhd_3840_2160_25fps.mp4';
 
 /* ─────────────────────────────────────────────────
    GLOBAL HERO BACKGROUND
 ───────────────────────────────────────────────── */
 export const HeroBackground = () => {
-  const [particles, setParticles] = useState([]);
-
-  useEffect(() => {
-    const newParticles = Array.from({ length: 90 }).map((_, i) => {
-      const size = 4 + Math.random() * 6;
-      return {
-        id: i,
-        width: `${size}px`,
-        height: `${size}px`,
-        left: `${Math.random() * 100}%`,
-        top: `${100 + Math.random() * 20}%`,
-        animationDuration: `${8 + Math.random() * 10}s`,
-        animationDelay: `${Math.random() * 10}s`
-      };
-    });
-    setParticles(newParticles);
-  }, []);
-
   return (
-    <div className="absolute inset-0 z-0 w-full h-full pointer-events-none overflow-hidden hero-bg">
-      <div className="animated-grid"></div>
-      <div className="orb orb1"></div>
-      <div className="orb orb2"></div>
-      <div className="orb orb3"></div>
-      <div className="particles-container">
-        {particles.map((p) => (
-          <div 
-            key={p.id} 
-            className="particle" 
-            style={{
-              width: p.width,
-              height: p.height,
-              left: p.left,
-              top: p.top,
-              animationDuration: p.animationDuration,
-              animationDelay: p.animationDelay
-            }}
-          />
-        ))}
-      </div>
+    <div className="absolute inset-0 z-0 w-full h-full pointer-events-none overflow-hidden bg-[#050a15]">
+      <video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
+      >
+        <source src={heroVideo} type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#050a15]/60 via-transparent to-[#04070f]/80"></div>
     </div>
   );
 };
