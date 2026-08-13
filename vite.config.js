@@ -8,8 +8,17 @@ export default defineConfig({
   assetsInclude: ['**/*.mkv'],
   resolve: {
     alias: {
-      // 2. Define the '@' symbol to point to your 'src' directory
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          ui: ['framer-motion', 'lucide-react', 'swiper'],
+        }
+      }
+    }
+  }
 })

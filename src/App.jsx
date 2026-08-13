@@ -1,9 +1,10 @@
 import React, { useEffect, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './Componenet/Navbar'
-import Footer from './Pages/Footer'
 import Home from './Pages/HomePage'
-import CTABanner from './Componenet/CTABanner'
+
+const CTABanner = React.lazy(() => import('./Componenet/CTABanner'))
+const Footer = React.lazy(() => import('./Pages/Footer'))
 
 const Grow_Business = React.lazy(() => import('./Pages/Grow_Business'))
 const Platform = React.lazy(() => import('./Pages/Need_Platform'))

@@ -256,8 +256,6 @@ const HeroSection = () => {
     <>
       {/* PROFESSIONAL INDUSTRY STANDARD FONTS */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
-
         :root {
           --gold: #c9a96e;
           --cyan-glow: #22d3ee;

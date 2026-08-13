@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Palette, Globe, ShoppingBag, Film, Layout, Zap, Smartphone, Monitor, Layers3, Gamepad2, Database, CloudCog, Apple, Server, Code2, Boxes, GitBranch, TrendingUp } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import React, { Suspense } from 'react';
 import HeroSection from '../Componenet/Hero';
-import TestimonialSection from '../Componenet/TestimonialSection';
-import SeoSection from '../Componenet/SeoSection';
-import BlogSection from '../Componenet/BlogSection';
+const TestimonialSection = React.lazy(() => import('../Componenet/TestimonialSection'));
+const SeoSection = React.lazy(() => import('../Componenet/SeoSection'));
+const BlogSection = React.lazy(() => import('../Componenet/BlogSection'));
 import techVideoBg from '../assets/15254965_1920_1080_24fps.mp4';
 import LazyVideo from '../Componenet/LazyVideo';
 
@@ -355,7 +356,7 @@ const Home = () => {
                   className="group flex flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[#0a0f1d] backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.25)] transition-all hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(34,211,238,0.15)]"
                 >
                   <div className="relative h-56 w-full overflow-hidden">
-                    <img src={service.image} alt={service.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                    <img loading="lazy" src={service.image} alt={service.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1d] to-transparent opacity-90" />
                   </div>
 
@@ -557,15 +558,16 @@ const Home = () => {
 
             <div className="lg:sticky lg:top-24 lg:self-start">
               <div className="overflow-hidden rounded-[32px] border border-cyan-400/20 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_55%),#10121b] p-2 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
-                <motion.img
-                  key={processSteps[activeProcess].key}
-                  initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.45 }}
-                  src={processSteps[activeProcess].image}
-                  alt={processSteps[activeProcess].title}
-                  className="h-[420px] w-full rounded-[24px] object-cover"
-                />
+                  <motion.img
+                    key={processSteps[activeProcess].key}
+                    initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.45 }}
+                    src={processSteps[activeProcess].image}
+                    alt={processSteps[activeProcess].title}
+                    loading="lazy"
+                    className="h-[420px] w-full rounded-[24px] object-cover"
+                  />
                 <div className="mt-4 flex items-center justify-between rounded-full border border-cyan-400/10 bg-black/45 px-6 py-4 text-lg text-white/80 backdrop-blur-sm">
                   <span className="font-bold uppercase tracking-[0.25em] text-cyan-300">
                     {processSteps[activeProcess].number}
@@ -578,12 +580,18 @@ const Home = () => {
         </div>
       </section>
 
-      <SeoSection />
+      <Suspense fallback={<div className="p-20 text-center text-cyan-400 font-mono tracking-widest text-xs uppercase animate-pulse">Loading Section...</div>}>
+        <SeoSection />
+      </Suspense>
 
-      <BlogSection />
+      <Suspense fallback={<div className="p-20 text-center text-cyan-400 font-mono tracking-widest text-xs uppercase animate-pulse">Loading Section...</div>}>
+        <BlogSection />
+      </Suspense>
 
       {/* Animated Testimonials Section */}
-      <TestimonialSection />
+      <Suspense fallback={<div className="p-20 text-center text-cyan-400 font-mono tracking-widest text-xs uppercase animate-pulse">Loading Section...</div>}>
+        <TestimonialSection />
+      </Suspense>
     </div>
   );
 };
