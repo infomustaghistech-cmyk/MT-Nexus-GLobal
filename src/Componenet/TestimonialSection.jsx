@@ -86,11 +86,24 @@ const testimonialsData = [
 ];
 
 const TestimonialCard = ({ testimonial }) => {
+  const ref = useRef(null);
+  
+  // Track this specific card's position in the viewport
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  // Scale from 0.8 to 1 to 0.8 as it scrolls through the screen
+  const scale = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0.8, 1, 1, 0.8]);
+  // Opacity fades in and out at the edges
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.3]);
+
   return (
     <motion.div 
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      className="w-full h-full bg-[#0a0f1d]/50 backdrop-blur-md rounded-[24px] p-8 md:p-10 border border-black hover:border-black hover:shadow-[0_30px_60px_rgba(34,211,238,0.15)] transition-all duration-500 group relative overflow-hidden flex flex-col justify-between select-none touch-target"
+      ref={ref}
+      style={{ scale, opacity, position: 'relative' }}
+      className="w-full max-w-4xl mx-auto shrink-0 bg-[#0a0f1d]/50 backdrop-blur-md rounded-[24px] p-8 md:p-10 border border-black hover:border-black hover:shadow-[0_30px_60px_rgba(34,211,238,0.15)] transition-shadow duration-500 group overflow-hidden flex flex-col justify-between select-none"
     >
       {/* Decorative Subtle Glowing Corner */}
       <div className="absolute -top-10 -right-10 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl group-hover:bg-cyan-500/20 transition-all duration-500 pointer-events-none" />
@@ -162,19 +175,12 @@ const TestimonialSection = () => {
         </p>
       </div>
 
-      {/* Horizontal Swipeable Carousel */}
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="flex flex-row overflow-x-auto gap-6 relative z-10 w-full px-6 pb-8 no-scrollbar snap-x-mandatory"
-      >
+      {/* 1 Column Layout */}
+      <div className="relative flex flex-col gap-6 md:gap-8 w-full max-w-5xl mx-auto" style={{ position: 'relative' }}>
         {testimonialsData.map((testimonial, idx) => (
-          <div key={idx} className="w-[85vw] md:w-[600px] shrink-0 snap-align-center">
-            <TestimonialCard testimonial={testimonial} />
-          </div>
+          <TestimonialCard key={idx} testimonial={testimonial} />
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 };

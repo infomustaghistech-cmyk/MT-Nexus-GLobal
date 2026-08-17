@@ -107,7 +107,7 @@ const AboutPage = () => {
           >
             <div className="section-label justify-center mb-6">Who We Are</div>
             
-            <h1 className="text-2xl md:text-4xl sm:text-6xl md:text-7xl font-bold leading-tight mb-6 font-serif-accent drop-shadow-2xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 font-serif-accent drop-shadow-2xl">
               About MT Nexus <br />
               <em className="italic text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 pr-2">Global</em>
             </h1>

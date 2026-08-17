@@ -18,31 +18,46 @@ const Template = () => {
     <div>
       <Navebar />
     
-    <div className="min-h-screen bg-[#FDFDFD] text-[#121212] font-sans">
-      <div className="relative z-50 w-full max-w-7xl mx-auto mb-6 mt-8 md:mt-4">
-        <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-cyan-500 hover:text-cyan-400 font-bold tracking-wider transition-colors bg-white/80 p-2 md:px-4 rounded-lg backdrop-blur-md border border-gray-200 shadow-md">
+    <div className="min-h-screen bg-[#FDFDFD] text-[#121212] font-sans relative">
+      {/* Dark gradient overlay for white Navbar visibility */}
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/60 to-transparent pointer-events-none z-[45]" />
+
+      <div className="relative z-50 w-full max-w-7xl mx-auto mb-6 mt-20 md:mt-24 px-6 md:px-12">
+        <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-cyan-500 hover:text-cyan-400 font-bold tracking-wider transition-colors bg-white/80 p-2 md:px-4 rounded-lg backdrop-blur-md border border-gray-200 shadow-md w-fit">
           <span className="text-xl">←</span>
         </button>
       </div>
       {/* 1. Header Section (Image 1 jaisa) */}
-      <header className="px-12 pt-24 pb-16 border-b border-gray-100 flex flex-col md:flex-row justify-between items-start gap-8">
-        <h1 className="text-4xl md:text-6xl md:text-8xl font-medium tracking-tight leading-[0.9] max-w-3xl">
+      <header className="px-6 md:px-12 pt-24 pb-16 border-b border-gray-100 flex flex-col md:flex-row justify-between items-start gap-8">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-medium tracking-tight leading-[1.1] md:leading-[0.9] max-w-3xl">
           Make any website template yours with ease.
         </h1>
-        <p className="max-w-[320px] text-[15px] leading-relaxed text-gray-600 mt-4">
-          Whether you need a portfolio website, an online store, or a personal blog, you can use Squarespace's customizable templates.
+        <p className="max-w-full md:max-w-[320px] text-[15px] leading-relaxed text-gray-600 mt-2 md:mt-4">
+          Whether you need a portfolio website, an online store, or a personal blog, you can use customizable templates.
         </p>
       </header>
 
-      <div className="flex px-12 py-12 gap-6 md:gap-16">
+      <div className="flex flex-col lg:flex-row px-6 md:px-12 py-12 gap-10 md:gap-16">
         {/* 2. Sidebar Filters (Video aur Image 2 jaisa) */}
-        <aside className="w-60 shrink-0 sticky top-10 h-fit hidden lg:block">
-          <div className="mb-12">
-            <h3 className="text-xs font-bold uppercase tracking-widest mb-6">Type</h3>
-            <div className="space-y-4">
+        <aside className="w-full lg:w-60 shrink-0 lg:sticky top-10 h-fit">
+          {/* Type Accordion/List */}
+          <div className="mb-6 lg:mb-12 border-b border-gray-100 lg:border-none pb-4 lg:pb-0">
+            <button 
+              className="w-full flex lg:block justify-between items-center text-xs font-bold uppercase tracking-widest mb-4 lg:mb-6"
+              onClick={() => {
+                const el = document.getElementById('type-list');
+                if (window.innerWidth < 1024) el.classList.toggle('hidden');
+              }}
+            >
+              <span>Type</span>
+              <span className="lg:hidden">▼</span>
+            </button>
+            <div id="type-list" className="hidden lg:block space-y-4">
               {['Online Store', 'Portfolio', 'Memberships', 'Blog', 'Scheduling', 'One Page', 'Courses'].map((type) => (
-                <div key={type} className="flex items-center gap-3 cursor-pointer group">
-                  <div className={`w-4 h-4 border rounded-sm transition-all ${selectedTypes.includes(type) ? 'bg-black border-black' : 'border-gray-300 group-hover:border-black'}`}>
+                <div key={type} className="flex items-center gap-3 cursor-pointer group" onClick={() => {
+                  setSelectedTypes(prev => prev.includes(type) ? prev.filter(t => t !== type) : [...prev, type]);
+                }}>
+                  <div className={`w-4 h-4 border rounded-sm transition-all flex items-center justify-center ${selectedTypes.includes(type) ? 'bg-black border-black' : 'border-gray-300 group-hover:border-black'}`}>
                     {selectedTypes.includes(type) && <Check size={12} className="text-white" />}
                   </div>
                   <span className="text-sm text-gray-700 group-hover:text-black">{type}</span>
@@ -51,9 +66,19 @@ const Template = () => {
             </div>
           </div>
 
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest mb-6">Topic</h3>
-            <ul className="space-y-4 text-sm">
+          {/* Topic Accordion/List */}
+          <div className="border-b border-gray-100 lg:border-none pb-4 lg:pb-0">
+            <button 
+              className="w-full flex lg:block justify-between items-center text-xs font-bold uppercase tracking-widest mb-4 lg:mb-6"
+              onClick={() => {
+                const el = document.getElementById('topic-list');
+                if (window.innerWidth < 1024) el.classList.toggle('hidden');
+              }}
+            >
+              <span>Topic</span>
+              <span className="lg:hidden">▼</span>
+            </button>
+            <ul id="topic-list" className="hidden lg:block space-y-4 text-sm">
               <li className="font-bold border-l-2 border-black pl-3">Popular Designs (29)</li>
               {['Art & Design', 'Community', 'Education', 'Fashion', 'Health & Beauty'].map(topic => (
                 <li key={topic} className="pl-3 text-gray-500 hover:text-black cursor-pointer transition-colors">{topic}</li>
@@ -92,12 +117,12 @@ const Template = () => {
           </div>
 
           {/* 4. Blueprint AI Dark Banner (Image 4 & 5 jaisa) */}
-          <section className="bg-[#121212] rounded-2xl p-6 md:p-16 md:p-24 text-white flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-16 overflow-hidden relative">
+          <section className="bg-[#121212] rounded-2xl p-6 md:p-12 lg:p-24 text-white flex flex-col lg:flex-row items-center justify-between gap-10 md:gap-16 overflow-hidden relative">
             <div className="max-w-md z-10">
-              <h2 className="text-2xl md:text-4xl md:text-5xl font-medium mb-8 leading-[1.1]">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-medium mb-6 md:mb-8 leading-[1.1]">
                 Start with the Blueprint AI Website Builder
               </h2>
-              <p className="text-gray-400 text-sm mb-10 leading-relaxed">
+              <p className="text-gray-400 text-sm mb-8 md:mb-10 leading-relaxed">
                 Create a unique and professional website in minutes. Get expert design guidance, premium starter content, and curated styling options.
               </p>
               <button className="bg-white text-black font-bold text-[11px] tracking-[0.2em] px-4 md:px-10 py-5 uppercase hover:bg-gray-200 transition-all flex items-center gap-3">
@@ -126,7 +151,7 @@ const Template = () => {
       </div>
 
       {/* Floating Button (Image 1 corner) */}
-      <button className="fixed bottom-10 right-10 bg-white border border-gray-200 shadow-2xl px-8 py-3.5 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase hover:scale-105 transition-transform z-50">
+      <button className="fixed bottom-4 right-4 md:bottom-10 md:right-10 bg-white border border-gray-200 shadow-2xl px-6 py-3 md:px-8 md:py-3.5 rounded-full text-[10px] md:text-[11px] font-bold tracking-[0.15em] uppercase hover:scale-105 transition-transform z-50">
         Try Blueprint AI Builder
       </button>
     </div>

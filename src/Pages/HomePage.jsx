@@ -321,7 +321,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-[#050816] text-white">
+    <div className="bg-[#050816] text-white overflow-x-clip w-full max-w-[100vw]">
       <HeroSection />
 
       <section className="px-6 md:px-10 lg:px-16 py-10 md:py-20 md:py-28">
@@ -437,19 +437,58 @@ const Home = () => {
                     const active = tab.id === activeTab;
 
                     return (
-                      <button
-                        key={tab.id}
-                        onClick={() => setActiveTab(tab.id)}
-                        className={`flex items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-medium transition-all ${active ? 'bg-gradient-to-r from-cyan-600/80 to-blue-700/80 text-white shadow-lg shadow-cyan-900/20' : 'bg-transparent text-gray-400 hover:bg-white/6 hover:text-white'}`}
-                      >
-                        <span className="flex items-center gap-3">
-                          <span className={`rounded-full p-2 ${active ? 'bg-white/15' : 'bg-white/5'}`}>
-                            <Icon size={16} />
+                      <React.Fragment key={tab.id}>
+                        <button
+                          onClick={() => setActiveTab(tab.id)}
+                          className={`flex items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-medium transition-all ${active ? 'bg-gradient-to-r from-cyan-600/80 to-blue-700/80 text-white shadow-lg shadow-cyan-900/20' : 'bg-transparent text-gray-400 hover:bg-white/6 hover:text-white'}`}
+                        >
+                          <span className="flex items-center gap-3">
+                            <span className={`rounded-full p-2 ${active ? 'bg-white/15' : 'bg-white/5'}`}>
+                              <Icon size={16} />
+                            </span>
+                            {tab.label}
                           </span>
-                          {tab.label}
-                        </span>
-                        <ArrowRight size={16} className={`${active ? 'translate-x-0 opacity-100' : 'opacity-0'}`} />
-                      </button>
+                          <ArrowRight size={16} className={`${active ? 'translate-x-0 opacity-100' : 'opacity-0'}`} />
+                        </button>
+                        
+                        {/* Mobile Accordion Content */}
+                        {active && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="lg:hidden mt-2 mb-2 overflow-hidden rounded-[20px] border border-white/10 bg-[#0f172a]/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-md"
+                          >
+                            <div className="flex items-center gap-3">
+                              <div className={`rounded-2xl bg-gradient-to-br ${tab.accent} p-3 text-white`}>
+                                <Icon size={20} />
+                              </div>
+                              <div>
+                                <p className="text-[11px] uppercase tracking-[0.35em] text-cyan-400">Focused stack</p>
+                                <h3 className="text-xl font-semibold text-white">{tab.label}</h3>
+                              </div>
+                            </div>
+                            <div className="mt-6 space-y-6">
+                              {tab.groups.map((group) => (
+                                <div key={group.title}>
+                                  <h4 className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-gray-400">{group.title}</h4>
+                                  <div className="flex flex-wrap gap-2">
+                                    {group.items.map((item) => {
+                                      const ItemIcon = item.icon;
+                                      return (
+                                        <div key={item.name} className="flex items-center gap-2 rounded-full border border-cyan-400/15 bg-cyan-400/10 px-3 py-2 text-xs text-gray-200 shadow-[0_0_0_1px_rgba(255,255,255,0.03)] backdrop-blur-sm">
+                                          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-cyan-400"><ItemIcon size={12} /></span>
+                                          {item.name}
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </React.Fragment>
                     );
                   })}
                 </div>
@@ -460,7 +499,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35 }}
-                className="flex-1 rounded-[24px] border border-white/10 bg-[#0f172a]/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-7 backdrop-blur-md"
+                className="hidden lg:block flex-1 rounded-[24px] border border-white/10 bg-[#0f172a]/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-7 backdrop-blur-md"
               >
                 <div className="flex items-center gap-3">
                   <div className={`rounded-2xl bg-gradient-to-br ${selectedTab.accent} p-3 text-white`}>
@@ -519,10 +558,13 @@ const Home = () => {
             className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between"
           >
             <motion.div variants={slideInLeft}>
-              <p className="text-[11px] uppercase tracking-[0.35em] text-cyan-400">Our Product Development Process</p>
-              <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
-                <span className="block">Our product</span>
-                <span className="block text-emerald-400">development process</span>
+              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.35em] text-cyan-300 mb-4">
+                <span className="h-2 w-2 rounded-full bg-cyan-400" />
+                Our Workflow
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-white mb-2">
+                Our Product <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Development</span> <br />
+                <em className="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500 pr-1">Process</em>
               </h2>
             </motion.div>
             <motion.a variants={slideInRight} href="#" className="inline-flex items-center gap-2 text-sm font-medium text-white/80 transition hover:text-cyan-300">
@@ -540,16 +582,16 @@ const Home = () => {
                     key={step.key}
                     data-process-card
                     data-process-index={index}
-                    className={`rounded-[24px] border p-5 transition-all duration-300 ${active ? 'border-cyan-400/30 bg-cyan-400/10 shadow-[0_0_30px_rgba(34,211,238,0.12)]' : 'border-white/10 bg-white/[0.03]'}`}
+                    className={`rounded-[24px] border p-6 md:p-10 transition-all duration-300 min-h-[160px] md:min-h-[200px] flex flex-col justify-center ${active ? 'border-cyan-400/30 bg-cyan-400/10 shadow-[0_0_20px_rgba(34,211,238,0.1)]' : 'border-white/10 bg-white/[0.03]'}`}
                   >
                     <div className="flex items-start gap-4">
                       <div className={`mt-1 h-full w-[3px] rounded-full bg-gradient-to-b ${active ? 'from-cyan-400 to-emerald-400' : 'from-white/10 to-transparent'}`} />
                       <div className="flex-1">
-                        <p className="text-sm uppercase tracking-[0.25em] text-gray-400">{step.number}</p>
-                        <h3 className={`mt-4 text-2xl md:text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight ${active ? step.titleColor || 'text-cyan-300' : 'text-white'}`}>
+                        <p className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-gray-400">{step.number}</p>
+                        <h3 className={`mt-2 text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight ${active ? step.titleColor || 'text-cyan-300' : 'text-white'}`}>
                           {step.title}
                         </h3>
-                        <p className="mt-8 text-xl sm:text-2xl leading-relaxed text-gray-300">{step.description}</p>
+                        <p className="mt-4 text-sm sm:text-base leading-relaxed text-gray-300">{step.description}</p>
                       </div>
                     </div>
                   </div>
@@ -557,12 +599,12 @@ const Home = () => {
               })}
             </div>
 
-            <div className="lg:sticky lg:top-24 lg:self-start">
+            <div className="lg:sticky lg:top-24 lg:self-start h-max z-10">
               <div className="overflow-hidden rounded-[32px] border border-cyan-400/20 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_55%),#10121b] p-2 shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
                   <motion.img
                     key={processSteps[activeProcess].key}
-                    initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{ duration: 0.45 }}
                     src={processSteps[activeProcess].image}
                     alt={processSteps[activeProcess].title}

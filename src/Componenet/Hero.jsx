@@ -102,8 +102,11 @@ const Carousel = () => {
   };
 
   return (
-    <div className="w-full relative h-[250px] sm:h-[320px] md:h-[400px]">
-      <div className="relative flex items-center justify-center w-full h-full overflow-hidden sm:overflow-visible">
+    <div className="w-full relative h-[250px] sm:h-[320px] md:h-[400px]" style={{ position: 'relative' }}>
+      <div 
+        className="relative flex items-center justify-center w-full h-full overflow-hidden sm:overflow-visible"
+        style={{ position: 'relative' }}
+      >
         {cards.map((card, index) => {
           const pos = getPos(index);
           const isActive = pos === 0;
@@ -127,7 +130,7 @@ const Carousel = () => {
               }}
               transition={{ type: 'spring', stiffness: 250, damping: 25 }}
               className="absolute cursor-grab active:cursor-grabbing w-[80vw] max-w-[550px] aspect-[16/10] sm:aspect-[16/11]"
-              style={{ perspective: 1200 }}
+              style={{ perspective: 1200, position: 'absolute' }}
               onClick={() => !isActive && (pos > 0 ? next() : prev())}
             >
               <div className={`relative w-full h-full overflow-hidden rounded-2xl transition-all duration-500 ${isActive ? 'border-2 border-black shadow-[0_20px_50px_rgba(0,0,0,0.6)]' : 'border-black/70'}`}>
