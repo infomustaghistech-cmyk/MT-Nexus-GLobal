@@ -21,7 +21,7 @@ const StatCard = ({ label, value, gradient, icon: IconComp }) => (
     <div className="flex items-start justify-between">
       <div>
         <p className="text-gray-600 text-xs uppercase tracking-widest font-medium mb-2">{label}</p>
-        <p className="text-4xl font-bold text-white">{value}</p>
+        <p className="text-2xl md:text-4xl font-bold text-white">{value}</p>
       </div>
       <div className={`p-2.5 rounded-xl bg-gradient-to-br ${gradient} bg-opacity-10`}>
         <div className="text-white opacity-80"><IconComp /></div>
@@ -203,8 +203,8 @@ const Admin = () => {
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#050505]">
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px]" />
-          <form onSubmit={handleLogin} className="relative bg-[#0a0a0a] border border-white/10 p-10 rounded-3xl w-full max-w-md shadow-2xl z-10">
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] h-auto md:h-[500px] bg-cyan-500/10 rounded-full blur-[100px]" />
+          <form onSubmit={handleLogin} className="relative bg-[#0a0a0a] border border-white/10 p-4 md:p-10 rounded-3xl w-full max-w-md shadow-2xl z-10">
             <div className="text-center mb-8">
               <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold shadow-lg">A</div>
               <h2 className="text-2xl font-bold text-white">Admin Access</h2>
@@ -239,7 +239,7 @@ const Admin = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 md:py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
           <StatCard label="Total Projects" value={allProjects.length} gradient="from-cyan-500 to-blue-600" icon={Icon.Projects} />
           <StatCard label="Uploaded Reviews" value={feedbacks.length} gradient="from-amber-500 to-orange-500" icon={Icon.Feedback} />
@@ -306,7 +306,7 @@ const Admin = () => {
                 </div>
               </div>
 
-              <button type="submit" disabled={isUploading} className={`w-full ${editProjectId ? 'bg-gradient-to-r from-emerald-500 to-teal-500' : 'bg-gradient-to-r from-cyan-500 to-blue-600'} hover:opacity-90 p-4 rounded-2xl font-bold flex items-center justify-center gap-2`}>
+              <button type="submit" disabled={isUploading} className={`w-full ${editProjectId ? 'bg-gradient-to-r from-emerald-500 to-teal-500' : 'bg-gradient-to-r from-cyan-500 to-blue-600'} hover:opacity-90 p-4 rounded-2xl font-bold flex items-center justify-center gap-2 text-white`}>
                 {isUploading ? 'Saving...' : editProjectId ? '✓ Save Changes' : <><Icon.Upload /> Publish Project</>}
               </button>
             </form>
@@ -316,7 +316,7 @@ const Admin = () => {
               {allProjects.length > 0 ? allProjects.map((project) => (
                 <div key={project.id} className="group bg-[#0a0a0a] border border-white/[0.07] rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-all duration-300">
                   <div className="relative overflow-hidden h-44">
-                    <img src={project.img} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src={project.img} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <span className="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-widest bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-2.5 py-1 rounded-full backdrop-blur-sm">{project.category}</span>
                   </div>
@@ -329,7 +329,7 @@ const Admin = () => {
                     </div>
                   </div>
                 </div>
-              )) : <p className="text-gray-700 italic col-span-full text-center py-10">No projects uploaded yet.</p>}
+              )) : <p className="text-gray-700 italic col-span-full text-center py-6 md:py-10">No projects uploaded yet.</p>}
             </div>
           </div>
         )}
@@ -389,7 +389,7 @@ const Admin = () => {
                   
                   {/* Shows the uploaded screenshot */}
                   <div className="w-full h-40 bg-black rounded-xl overflow-hidden border border-white/10 relative">
-                    <img src={f.clientImg} alt="Review Screenshot" className="w-full h-full object-contain" />
+                    <img src={f.clientImg} alt="Review Screenshot" className="w-full h-full object-contain" loading="lazy" />
                   </div>
 
                   <div className="mt-4 border-t border-white/5 pt-4">
@@ -398,7 +398,7 @@ const Admin = () => {
                     </button>
                   </div>
                 </div>
-              )) : <p className="col-span-full text-center py-10 text-gray-600">No screenshots uploaded yet.</p>}
+              )) : <p className="col-span-full text-center py-6 md:py-10 text-gray-600">No screenshots uploaded yet.</p>}
             </div>
           </div>
         )}
@@ -426,7 +426,7 @@ const Admin = () => {
                   </div>
                 ))}
               </div>
-            ) : <p className="text-center py-20 text-gray-600">📭 No messages received yet.</p>}
+            ) : <p className="text-center py-10 md:py-20 text-gray-600">📭 No messages received yet.</p>}
           </div>
         )}
       </div>

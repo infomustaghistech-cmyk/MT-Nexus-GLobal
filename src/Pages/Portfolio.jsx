@@ -7,7 +7,8 @@ import { supabase } from '../supabaseClient';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import videoBg from '../assets/15254965_1920_1080_24fps.mp4';
+import videoBg from '../assets/15254965_1920_1080_24fps-optimized-v2.mp4';
+import videoPoster from '@/assets/15254965_1920_1080_24fps-poster.webp';
 import LazyVideo from '../Componenet/LazyVideo'; 
 
 const Portfolio = () => {
@@ -47,16 +48,16 @@ const Portfolio = () => {
 
   return (
     // FIX: Removed solid bg-[#050505] from the main wrapper
-    <div className="relative text-white min-h-screen font-sans px-4 py-16 overflow-hidden">
+    <div className="relative text-white min-h-screen font-sans px-4 py-8 md:py-16 overflow-hidden">
       <div className="relative z-50 w-full max-w-7xl mx-auto mb-6 mt-8 md:mt-4">
         <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold tracking-wider transition-colors bg-black/60 p-2 md:px-4 rounded-lg backdrop-blur-md border border-white/10">
-          <span className="text-xl">←</span> GO BACK
+          <span className="text-xl">←</span>
         </button>
       </div>
       
       {/* ─── FIXED VIDEO BACKGROUND (FIXED LAYER STACKING) ─── */}
       <div className="fixed inset-0 -z-10 w-full h-full bg-black">
-        <LazyVideo src={videoBg} className="w-full h-full object-cover opacity-50" />
+        <LazyVideo src={videoBg} poster={videoPoster} className="w-full h-full object-cover opacity-50" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black/90" />
       </div>
 
@@ -65,7 +66,7 @@ const Portfolio = () => {
         <motion.h4 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-cyan-500 text-sm font-bold tracking-[0.3em] uppercase mb-4">
           Our Portfolio
         </motion.h4>
-        <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+        <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-3xl md:text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
           SELECTED <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">WORKS</span>
         </motion.h1>
       </div>

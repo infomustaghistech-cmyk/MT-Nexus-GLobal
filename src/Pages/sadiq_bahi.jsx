@@ -2,12 +2,12 @@
 
 
       {/* Main Content */}
-      <main className="flex-grow flex flex-col-reverse lg:flex-row items-center justify-between px-10 lg:px-24 py-10 lg:py-0">
+      <main className="flex-grow flex flex-col-reverse lg:flex-row items-center justify-between px-4 md:px-10 lg:px-24 py-6 md:py-10 lg:py-0">
         
         {/* Left Section */}
         <div className="flex-1 space-y-4 text-center lg:text-left mt-10 lg:mt-0">
           <h3 className="text-2xl font-bold">Hello, It's Me</h3>
-          <h1 className="text-5xl lg:text-6xl font-bold">Rehna Ali</h1>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold">Rehna Ali</h1>
           <h3 className="text-2xl font-bold">
             And I'm a <span className="text-[#0ef]">Founder of MT Nexs Global</span>
           </h3>
@@ -53,10 +53,10 @@
               style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
             >
               <img 
-                src="src/assets/WhatsApp Image 2026-03-11 at 3.33.52 AM.jpg" 
+                src="src/assets/WhatsApp Image 2026-03-11 at 3.33.52 AM.webp" 
                 alt="Rehna Ali" 
                 className="w-full h-full object-cover"
-              />
+              loading="lazy" />
             </div>
           </div>
         </div>

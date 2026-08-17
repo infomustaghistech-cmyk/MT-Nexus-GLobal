@@ -7,7 +7,8 @@ import HeroSection from '../Componenet/Hero';
 const TestimonialSection = React.lazy(() => import('../Componenet/TestimonialSection'));
 const SeoSection = React.lazy(() => import('../Componenet/SeoSection'));
 const BlogSection = React.lazy(() => import('../Componenet/BlogSection'));
-import techVideoBg from '../assets/15254965_1920_1080_24fps.mp4';
+import techVideoBg from '../assets/15254965_1920_1080_24fps-optimized-v2.mp4';
+import videoPoster from '../assets/15254965_1920_1080_24fps-poster.webp';
 import LazyVideo from '../Componenet/LazyVideo';
 
 const fadeInUp = {
@@ -33,7 +34,7 @@ const services = [
   {
     title: 'Web Customization',
     description: 'Fast, modern, conversion-focused websites tailored for your business goals.',
-    image: '/gradient-ui-ux-landing-page_52683-69729.avif',
+    image: '/gradient-ui-ux-landing-page_52683-69729.webp',
     route: '/services/web_customization',
     icon: Globe,
     tag: 'WEB DEVELOPMENT',
@@ -41,7 +42,7 @@ const services = [
   {
     title: 'App Development',
     description: 'High-performance mobile apps designed for growth and seamless UX.',
-    image: '/user-interface-design-web-template_23-2149182790.avif',
+    image: '/user-interface-design-web-template_23-2149182790.webp',
     route: '/services/app_customization',
     icon: Layout,
     tag: 'MOBILE APPS',
@@ -49,7 +50,7 @@ const services = [
   {
     title: 'Shopify Stores',
     description: 'Beautiful storefronts with strong product presentation and smooth checkout flow.',
-    image: '/gradient-ui-ux-landing-page_52683-69729.avif',
+    image: '/gradient-ui-ux-landing-page_52683-69729.webp',
     route: '/services/shopify',
     icon: ShoppingBag,
     tag: 'E-COMMERCE',
@@ -57,7 +58,7 @@ const services = [
   {
     title: 'Video Editing',
     description: 'Professional editing and motion visuals that elevate your content and campaigns.',
-    image: '/video-production-landing-page_52683-76086.avif',
+    image: '/video-production-landing-page_52683-76086.webp',
     route: '/services/video-editing',
     icon: Film,
     tag: 'CONTENT CREATION',
@@ -65,7 +66,7 @@ const services = [
   {
     title: 'Digital Marketing & SEO',
     description: 'Data-driven marketing strategies and search optimization to boost visibility and drive organic traffic.',
-    image: '/user-interface-design-web-template_23-2149182790.avif',
+    image: '/user-interface-design-web-template_23-2149182790.webp',
     route: '/services/seo',
     icon: TrendingUp,
     tag: 'MARKETING & SEO',
@@ -113,7 +114,7 @@ const techTabs = [
       {
         title: 'Frontend',
         items: [
-          { name: 'React', icon: Monitor },
+          { name: 'React', icon: () => <svg viewBox="-11.5 -10.23174 23 20.46348" fill="currentColor" className="w-6 h-6"><circle cx="0" cy="0" r="2.05" /><g stroke="currentColor" strokeWidth="1" fill="none"><ellipse rx="11" ry="4.2" /><ellipse rx="11" ry="4.2" transform="rotate(60)" /><ellipse rx="11" ry="4.2" transform="rotate(120)" /></g></svg> },
           { name: 'Next.js', icon: Globe },
           { name: 'Vue', icon: Monitor },
           { name: 'TypeScript', icon: Code2 },
@@ -141,7 +142,7 @@ const techTabs = [
         title: 'Frameworks',
         items: [
           { name: 'Flutter', icon: Layers3 },
-          { name: 'React Native', icon: Monitor },
+          { name: 'React Native', icon: () => <svg viewBox="-11.5 -10.23174 23 20.46348" fill="currentColor" className="w-6 h-6"><circle cx="0" cy="0" r="2.05" /><g stroke="currentColor" strokeWidth="1" fill="none"><ellipse rx="11" ry="4.2" /><ellipse rx="11" ry="4.2" transform="rotate(60)" /><ellipse rx="11" ry="4.2" transform="rotate(120)" /></g></svg> },
           { name: 'Xamarin', icon: Boxes },
           { name: 'Ionic', icon: Smartphone },
         ],
@@ -323,7 +324,7 @@ const Home = () => {
     <div className="bg-[#050816] text-white">
       <HeroSection />
 
-      <section className="px-6 md:px-10 lg:px-16 py-20 md:py-28">
+      <section className="px-6 md:px-10 lg:px-16 py-10 md:py-20 md:py-28">
         <div className="max-w-7xl mx-auto">
           <motion.div
             variants={staggerContainer}
@@ -385,7 +386,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="technologies" className="relative overflow-hidden px-6 md:px-10 lg:px-16 py-20 md:py-28">
+      <section id="technologies" className="relative overflow-hidden px-6 md:px-10 lg:px-16 py-10 md:py-20 md:py-28">
         <video
           autoPlay
           loop
@@ -418,7 +419,7 @@ const Home = () => {
                 <span className="h-2 w-2 rounded-full bg-cyan-400" />
                 Tech Stack
               </motion.div>
-              <motion.h2 variants={slideInLeft} className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <motion.h2 variants={slideInLeft} className="mt-4 text-2xl md:text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-purple-500">Technologies</span> we <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">use</span>
               </motion.h2>
               <motion.p variants={fadeInUp} className="mt-4 max-w-4xl text-base leading-relaxed text-gray-300 sm:text-lg lg:text-xl">
@@ -545,7 +546,7 @@ const Home = () => {
                       <div className={`mt-1 h-full w-[3px] rounded-full bg-gradient-to-b ${active ? 'from-cyan-400 to-emerald-400' : 'from-white/10 to-transparent'}`} />
                       <div className="flex-1">
                         <p className="text-sm uppercase tracking-[0.25em] text-gray-400">{step.number}</p>
-                        <h3 className={`mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight ${active ? step.titleColor || 'text-cyan-300' : 'text-white'}`}>
+                        <h3 className={`mt-4 text-2xl md:text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight ${active ? step.titleColor || 'text-cyan-300' : 'text-white'}`}>
                           {step.title}
                         </h3>
                         <p className="mt-8 text-xl sm:text-2xl leading-relaxed text-gray-300">{step.description}</p>
@@ -566,7 +567,7 @@ const Home = () => {
                     src={processSteps[activeProcess].image}
                     alt={processSteps[activeProcess].title}
                     loading="lazy"
-                    className="h-[420px] w-full rounded-[24px] object-cover"
+                    className="h-auto md:h-[420px] w-full rounded-[24px] object-cover"
                   />
                 <div className="mt-4 flex items-center justify-between rounded-full border border-cyan-400/10 bg-black/45 px-6 py-4 text-lg text-white/80 backdrop-blur-sm">
                   <span className="font-bold uppercase tracking-[0.25em] text-cyan-300">
@@ -580,16 +581,16 @@ const Home = () => {
         </div>
       </section>
 
-      <Suspense fallback={<div className="p-20 text-center text-cyan-400 font-mono tracking-widest text-xs uppercase animate-pulse">Loading Section...</div>}>
+      <Suspense fallback={<div className="p-8 md:p-20 text-center text-cyan-400 font-mono tracking-widest text-xs uppercase animate-pulse">Loading Section...</div>}>
         <SeoSection />
       </Suspense>
 
-      <Suspense fallback={<div className="p-20 text-center text-cyan-400 font-mono tracking-widest text-xs uppercase animate-pulse">Loading Section...</div>}>
+      <Suspense fallback={<div className="p-8 md:p-20 text-center text-cyan-400 font-mono tracking-widest text-xs uppercase animate-pulse">Loading Section...</div>}>
         <BlogSection />
       </Suspense>
 
       {/* Animated Testimonials Section */}
-      <Suspense fallback={<div className="p-20 text-center text-cyan-400 font-mono tracking-widest text-xs uppercase animate-pulse">Loading Section...</div>}>
+      <Suspense fallback={<div className="p-8 md:p-20 text-center text-cyan-400 font-mono tracking-widest text-xs uppercase animate-pulse">Loading Section...</div>}>
         <TestimonialSection />
       </Suspense>
     </div>

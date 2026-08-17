@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './Componenet/Navbar'
 import Home from './Pages/HomePage'
@@ -32,14 +32,20 @@ const Projact_video = React.lazy(() => import('./Pages/Project_video'))
 const Projact_graphic = React.lazy(() => import('./Pages/Project_graphic'))
 
 const LoadingScreen = () => (
-  <div className="flex h-screen w-full items-center justify-center bg-[#050a15]">
-    <div className="flex flex-col items-center gap-4">
-      <div className="w-12 h-12 border-4 border-cyan-500/20 border-t-cyan-500 rounded-full animate-spin"></div>
-      <p className="text-cyan-400 font-mono text-xs tracking-[0.2em] uppercase animate-pulse">Loading...</p>
+  <div className="flex h-screen w-full items-center justify-center bg-[#050a15] p-6">
+    <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[1, 2, 3, 4, 5, 6].map((i) => (
+        <div key={i} className="w-full h-64 bg-[#0a0f1d] rounded-2xl p-6 flex flex-col gap-4 animate-pulse border border-white/5">
+          <div className="w-16 h-16 rounded-full bg-cyan-500/10 mb-2"></div>
+          <div className="w-3/4 h-6 bg-white/10 rounded-md"></div>
+          <div className="w-full h-4 bg-white/5 rounded-md"></div>
+          <div className="w-5/6 h-4 bg-white/5 rounded-md"></div>
+          <div className="mt-auto w-32 h-10 bg-cyan-500/10 rounded-xl"></div>
+        </div>
+      ))}
     </div>
   </div>
 );
-
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -51,13 +57,73 @@ const ScrollToTop = () => {
   return null;
 };
 
+import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 
+const ScrollProgress = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
+  return (
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 origin-left z-[100]"
+      style={{ scaleX }}
+    />
+  );
+};
+
+const BackToTopButton = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.5, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.5, y: 20 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 w-12 h-12 bg-gradient-to-tr from-cyan-500 to-blue-600 text-white rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.5)] z-[90] cursor-pointer"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+          </svg>
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+};
 
 const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <ScrollProgress />
+      <BackToTopButton />
 
       <Navbar />
       <Suspense fallback={<LoadingScreen />}>
@@ -91,9 +157,9 @@ const App = () => {
           <Route path='/contact' element={<ContactPage />} />
           <Route path='/feedback' element={<FeedbackPage />} />
         </Routes>
+        <CTABanner />
+        <Footer />
       </Suspense>
-      <CTABanner />
-      <Footer />
 
     </BrowserRouter>
   )

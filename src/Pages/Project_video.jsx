@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
-import videoBg from '@/assets/15254965_1920_1080_24fps.mp4';
+import videoBg from '@/assets/15254965_1920_1080_24fps-optimized-v2.mp4';
+import videoPoster from '@/assets/15254965_1920_1080_24fps-poster.webp';
 import { supabase } from '../supabaseClient';
 import LazyVideo from '../Componenet/LazyVideo';
 import 'swiper/css';
@@ -47,16 +48,16 @@ const Projact_video = () => {
 
   return (
     // FIX: Removed solid bg color
-    <div className="relative text-white min-h-screen font-sans px-4 py-16 overflow-hidden">
+    <div className="relative text-white min-h-screen font-sans px-4 py-8 md:py-16 overflow-hidden">
       <div className="relative z-50 w-full max-w-7xl mx-auto mb-6 mt-8 md:mt-4">
         <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold tracking-wider transition-colors bg-black/60 p-2 md:px-4 rounded-lg backdrop-blur-md border border-white/10">
-          <span className="text-xl">←</span> GO BACK
+          <span className="text-xl">←</span>
         </button>
       </div>
       
       {/* Background Video with Cinematic Overlay */}
       <div className="fixed inset-0 -z-10 w-full h-full bg-[#0a0a0a]">
-        <LazyVideo src={videoBg} className="w-full h-full object-cover opacity-40" />
+        <LazyVideo src={videoBg} poster={videoPoster} className="w-full h-full object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-[#0a0a0a]" />
       </div>
 
@@ -64,7 +65,7 @@ const Projact_video = () => {
         <motion.h4 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-pink-500 text-sm font-bold tracking-[0.3em] uppercase mb-4">
           Visual Storytelling
         </motion.h4>
-        <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight uppercase">
+        <motion.h1 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-3xl md:text-5xl md:text-7xl font-extrabold mb-6 tracking-tight uppercase">
           Motion <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Graphics</span>
         </motion.h1>
       </div>
@@ -74,11 +75,7 @@ const Projact_video = () => {
           <button
             key={cat.name}
             onClick={() => handleCategoryClick(cat)}
-            className={`px-8 py-2.5 rounded-full text-xs font-bold transition-all duration-300 border backdrop-blur-md ${
-              cat.name === 'VIDEOS' 
-                ? 'bg-pink-500 text-white border-pink-400 shadow-[0_0_20px_rgba(236,72,153,0.4)]' 
-                : 'bg-white/5 text-white border-white/10 hover:bg-white/10'
-            }`}
+            className={`px-8 py-2.5 rounded-full text-xs font-bold transition-all duration-300 border backdrop-blur-md ${ cat.name === 'VIDEOS' ? 'bg-pink-500 text-white border-pink-400 shadow-[0_0_20px_rgba(236,72,153,0.4)]' : 'bg-white/5 border-white/10 hover:bg-white/10' }`}
           >
             {cat.name}
           </button>
@@ -118,7 +115,7 @@ const Projact_video = () => {
                 </motion.div>
               ))
             ) : (
-              <div className="col-span-full text-center py-24 border-2 border-dashed border-white/5 rounded-3xl backdrop-blur-md">
+              <div className="col-span-full text-center py-12 md:py-24 border-2 border-dashed border-white/5 rounded-3xl backdrop-blur-md">
                 <p className="text-gray-500 text-lg">No Video Projects Found. Cinematic works coming soon!</p>
               </div>
             )}

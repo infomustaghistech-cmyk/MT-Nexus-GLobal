@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ArrowRight, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import frontImg from '../assets/Front.PNG';
-import heroVideo from '../assets/3141208-uhd_3840_2160_25fps.mp4';
+import frontImg from '../assets/Front.webp';
+import heroVideo from '../assets/3141208-uhd_3840_2160_25fps-optimized-v2.mp4';
+import heroVideoPoster from '../assets/3141208-uhd_3840_2160_25fps-poster.webp';
 import LazyVideo from './LazyVideo';
 
 /* ─────────────────────────────────────────────────
@@ -12,7 +13,7 @@ import LazyVideo from './LazyVideo';
 export const HeroBackground = () => {
   return (
     <div className="absolute inset-0 z-0 w-full h-full pointer-events-none overflow-hidden bg-[#050a15]">
-      <LazyVideo src={heroVideo} className="absolute inset-0 w-full h-full object-cover opacity-40" />
+      <LazyVideo poster={heroVideoPoster} src={heroVideo} eager={true} className="absolute inset-0 w-full h-full object-cover opacity-40" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#050a15]/60 via-transparent to-[#04070f]/80"></div>
     </div>
   );
@@ -56,7 +57,7 @@ const StatCard = ({ number, label, delay }) => (
     transition={{ delay, duration: 0.7 }}
     className="flex flex-col items-center"
   >
-    <span className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter text-white">
+    <span className="text-2xl md:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter text-white">
       {number}
     </span>
     <span className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase text-white/50 mt-2 font-medium font-mono">
@@ -69,12 +70,12 @@ const StatCard = ({ number, label, delay }) => (
    PORTFOLIO CAROUSEL (Mobile Fixed & Swipeable)
 ───────────────────────────────────────────────── */
 const cards = [
-  { id: 1, img: '/6033265.jpg', label: 'E-Commerce', title: 'Bloom Store' },
+  { id: 1, img: '/6033265.webp', label: 'E-Commerce', title: 'Bloom Store' },
   { id: 2, img: '/jualcmljlawmppfnginu.webp', label: 'Branding', title: 'Terra Hues' },
-  { id: 3, img: '/4517399.jpg', label: 'Web Design', title: 'Plants & Co' },
-  { id: 4, img: '/4567620.jpg', label: 'UI/UX', title: 'Verdure App' },
+  { id: 3, img: '/4517399.webp', label: 'Web Design', title: 'Plants & Co' },
+  { id: 4, img: '/4567620.webp', label: 'UI/UX', title: 'Verdure App' },
   { id: 5, img: '/designer-vector-website-template-web-page-landing-design-mobile-site-development-professional-graphic-agency-services-141932344.webp', label: 'Agency', title: 'Creative Studio' },
-  { id: 6, img: '/video-production-landing-page_52683-76086.avif', label: 'Production', title: 'Portfolio Pro' },
+  { id: 6, img: '/video-production-landing-page_52683-76086.webp', label: 'Production', title: 'Portfolio Pro' },
 ];
 
 const Carousel = () => {
@@ -129,14 +130,14 @@ const Carousel = () => {
               style={{ perspective: 1200 }}
               onClick={() => !isActive && (pos > 0 ? next() : prev())}
             >
-              <div className={`relative w-full h-full overflow-hidden rounded-2xl transition-all duration-500 ${isActive ? 'border-2 border-black shadow-[0_20px_50px_rgba(0,0,0,0.6)]' : 'border-2 border-black/70'}`}>
+              <div className={`relative w-full h-full overflow-hidden rounded-2xl transition-all duration-500 ${isActive ? 'border-2 border-black shadow-[0_20px_50px_rgba(0,0,0,0.6)]' : 'border-black/70'}`}>
                 <img
                   src={card.img}
                   alt={card.title}
                   draggable="false"
                   className="w-full h-full object-cover transition-all duration-700"
                   style={{ filter: isActive ? 'none' : 'brightness(0.4) grayscale(0.5)' }}
-                />
+                loading="lazy" />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
 
@@ -493,7 +494,7 @@ const HeroSection = () => {
         {/* ═══════════════════════════════════════════
             SECTION 4 — CLIENT MARQUEE
         ═══════════════════════════════════════════ */}
-        <section className="w-full py-10 sm:py-16">
+        <section className="w-full py-6 md:py-10 sm:py-16">
           <ClientMarquee />
         </section>
 

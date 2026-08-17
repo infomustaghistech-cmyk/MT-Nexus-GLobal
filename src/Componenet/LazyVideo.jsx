@@ -1,17 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const LazyVideo = ({ src, className, type = "video/mp4" }) => {
-  const [shouldLoad, setShouldLoad] = useState(false);
+const LazyVideo = ({ src, className, type = "video/mp4", eager = false, poster }) => {
+  const [shouldLoad, setShouldLoad] = useState(eager);
   const videoRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
-    // Delay loading the video by a small amount to allow critical resources to load first
-    const timer = setTimeout(() => {
+    if (eager) {
       setShouldLoad(true);
-    }, 1000); // 1 second delay
+      return;
+    }
 
-    return () => clearTimeout(timer);
-  }, []);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" } // Load slightly before it comes into view
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [eager]);
 
   useEffect(() => {
     if (shouldLoad && videoRef.current) {
@@ -20,16 +35,20 @@ const LazyVideo = ({ src, className, type = "video/mp4" }) => {
   }, [shouldLoad]);
 
   return (
-    <video
-      ref={videoRef}
-      loop
-      muted
-      playsInline
-      className={className}
-      preload="none"
-    >
-      {shouldLoad && <source src={src} type={type} />}
-    </video>
+    <div ref={containerRef} className={className} style={{ width: '100%', height: '100%' }}>
+      <video
+        ref={videoRef}
+        loop
+        muted
+        playsInline
+        autoPlay={shouldLoad}
+        className="w-full h-full object-cover"
+        poster={poster}
+        preload={eager ? "auto" : "none"}
+      >
+        {shouldLoad && <source src={src} type={type} />}
+      </video>
+    </div>
   );
 };
 

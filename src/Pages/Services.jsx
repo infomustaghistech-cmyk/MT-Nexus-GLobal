@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Outlet, useNavigate, Link } from 'react-router-dom';
-import videoBg from '@/assets/15254965_1920_1080_24fps.mp4';
+import videoBg from '@/assets/15254965_1920_1080_24fps-optimized-v2.mp4';
+import videoPoster from '@/assets/15254965_1920_1080_24fps-poster.webp';
 import { ArrowUpRight, Zap, ShoppingBag, Palette, Globe, Film, Layout, ArrowRight } from 'lucide-react';
 import LazyVideo from '../Componenet/LazyVideo';
 
@@ -108,11 +109,7 @@ const ServiceCard = ({ service, index }) => {
       className="relative cursor-pointer group h-full"
     >
       <div
-        className={`relative h-full overflow-hidden transition-all duration-500 rounded-2xl flex flex-col justify-between ${
-          hovered 
-            ? 'bg-white/[0.04] border-cyan-500/50 shadow-[0_0_30px_rgba(34,211,238,0.15)]' 
-            : 'bg-white/[0.02] border-white/10 shadow-xl'
-        } border backdrop-blur-xl`}
+        className={`relative h-full overflow-hidden transition-all duration-500 rounded-2xl flex flex-col justify-between ${ hovered ? 'bg-white/[0.04] border-cyan-500/50 shadow-[0_0_30px_rgba(34,211,238,0.15)]' : 'bg-white/[0.02] border-white/10 shadow-xl' } border backdrop-blur-xl`}
       >
         {/* Top Glow Line */}
         <motion.div
@@ -131,9 +128,7 @@ const ServiceCard = ({ service, index }) => {
 
             <motion.div
               animate={{ rotate: hovered ? -10 : 0, scale: hovered ? 1.1 : 1 }}
-              className={`w-12 h-12 flex items-center justify-center rounded-full border transition-all duration-300 ${
-                hovered ? 'bg-cyan-500/10 border-cyan-400/30 shadow-[0_0_15px_rgba(34,211,238,0.2)]' : 'bg-white/5 border-white/10'
-              }`}
+              className={`w-12 h-12 flex items-center justify-center rounded-full border transition-all duration-300 ${ hovered ? 'bg-cyan-500/10 border-cyan-400/30 shadow-[0_0_15px_rgba(34,211,238,0.2)]' : 'bg-white/5 border-white/10' }`}
             >
               <Icon size={20} className={hovered ? 'text-cyan-400' : 'text-white/50'} strokeWidth={1.5} />
             </motion.div>
@@ -304,7 +299,7 @@ export default function ServicesPage() {
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold leading-[1.1] mb-6 font-serif-accent tracking-tight drop-shadow-xl"
+            className="text-3xl md:text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-bold leading-[1.1] mb-6 font-serif-accent tracking-tight drop-shadow-xl"
           >
             Premium Services,<br />
             <em className="italic text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 pr-2">Delivered Fast</em>
@@ -324,7 +319,7 @@ export default function ServicesPage() {
         <section className="px-4 sm:px-6 mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05] border border-white/10 rounded-2xl bg-white/[0.02] backdrop-blur-xl shadow-2xl overflow-hidden"
+            className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05] border border-white/10 rounded-2xl bg-white/[0.02] backdrop-blur-xl shadow-2xl overflow-hidden"
           >
             {stats.map((s, i) => (
               <div key={i} className="py-8 sm:py-10 px-4 text-center group hover:bg-white/[0.02] transition-colors">
@@ -353,11 +348,11 @@ export default function ServicesPage() {
         {/* ════════════════════════════════
             HOW WE WORK
         ════════════════════════════════ */}
-        <section className="px-4 sm:px-6 py-24 max-w-7xl mx-auto border-t border-white/10">
+        <section className="px-4 sm:px-6 py-12 md:py-24 max-w-7xl mx-auto border-t border-white/10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
             <div>
               <div className="section-label mb-4">Our Process</div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif-accent font-bold tracking-tight">
+              <h2 className="text-2xl md:text-4xl md:text-5xl lg:text-6xl font-serif-accent font-bold tracking-tight">
                 How We Work
               </h2>
             </div>
@@ -376,17 +371,17 @@ export default function ServicesPage() {
         {/* ════════════════════════════════
             BOTTOM CTA
         ════════════════════════════════ */}
-        <section className="px-4 sm:px-6 py-24 mb-10">
+        <section className="px-4 sm:px-6 py-12 md:py-24 mb-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center p-10 sm:p-20 relative overflow-hidden border border-white/10 rounded-[2rem] bg-white/[0.02] backdrop-blur-2xl shadow-2xl"
+            className="max-w-4xl mx-auto text-center p-4 md:p-10 sm:p-20 relative overflow-hidden border border-white/10 rounded-[2rem] bg-white/[0.02] backdrop-blur-2xl shadow-2xl"
           >
             {/* Soft Glow Background */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-cyan-500/20 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-[300px] h-[300px] bg-cyan-500/20 blur-[100px] rounded-full pointer-events-none" />
 
             <div className="relative z-10">
               <div className="section-label justify-center mb-6">Ready to Start?</div>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif-accent font-bold mb-6 leading-tight">
+              <h2 className="text-2xl md:text-4xl sm:text-5xl md:text-6xl font-serif-accent font-bold mb-6 leading-tight">
                 Let's Build Your Next<br />
                 <em className="italic text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 pr-2">Big Thing Together</em>
               </h2>

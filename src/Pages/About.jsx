@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { UserCheck, Users, ShieldCheck, Scale, Handshake } from 'lucide-react';
-import videoBg from '@/assets/15254965_1920_1080_24fps.mp4';
+import videoBg from '@/assets/15254965_1920_1080_24fps-optimized-v2.mp4';
+import videoPoster from '@/assets/15254965_1920_1080_24fps-poster.webp';
 import LazyVideo from '../Componenet/LazyVideo'; // Ensure path is correct
 // Import your images
-import founderImg from "../assets/WhatsApp_Image_2026-03-11_at_3.33.52_AM-removebg-preview.png";
-import topImg from "../assets/istockphoto-1961324209-1024x1024.jpg";
+import founderImg from "../assets/WhatsApp_Image_2026-03-11_at_3.33.52_AM-removebg-preview.webp";
+import topImg from "../assets/istockphoto-1961324209-1024x1024.webp";
 
 /* ─────────────────────────────────────────────────
    GLOBAL VIDEO BACKGROUND
@@ -48,7 +49,7 @@ const AboutPage = () => {
   // Team Data (Added fallback logic for missing images)
   const team = [
     { name: "Sadiq", role: "Founder & CEO", image: founderImg },
-    { name: "Afzal", role: "Co-Founder", image:"/afzal1.jpeg" }, // Using topImg as a placeholder for now
+    { name: "Afzal", role: "Co-Founder", image:"/afzal1.webp" }, // Using topImg as a placeholder for now
     { name: "Muslim", role: "Manager", image: null }, // Null image will show a premium placeholder
   ];
 
@@ -95,8 +96,8 @@ const AboutPage = () => {
       <div className="w-full relative text-white overflow-x-hidden font-sans-main bg-[#0a0a0a]/40 selection:bg-cyan-500 selection:text-black">
         
         {/* Ambient Glows */}
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none -z-10" />
-        <div className="absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+        <div className="absolute top-1/4 left-0 w-full md:w-[500px] h-auto md:h-[500px] bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+        <div className="absolute bottom-1/3 right-0 w-full md:w-[500px] h-auto md:h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none -z-10" />
 
         {/* 1. Hero Section */}
         <section className="relative min-h-[70vh] w-full flex items-center justify-center pt-32 pb-20 overflow-hidden text-center">
@@ -106,7 +107,7 @@ const AboutPage = () => {
           >
             <div className="section-label justify-center mb-6">Who We Are</div>
             
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-tight mb-6 font-serif-accent drop-shadow-2xl">
+            <h1 className="text-2xl md:text-4xl sm:text-6xl md:text-7xl font-bold leading-tight mb-6 font-serif-accent drop-shadow-2xl">
               About MT Nexus <br />
               <em className="italic text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 pr-2">Global</em>
             </h1>
@@ -123,14 +124,14 @@ const AboutPage = () => {
         </section>
 
         {/* 2. Discover Our Story */}
-        <section className="py-24 px-6 relative border-t border-white/5 bg-white/[0.01]">
+        <section className="py-12 md:py-24 px-6 relative border-t border-white/5 bg-white/[0.01]">
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}
-            className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+            className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-16 items-center"
           >
             <div>
               <div className="section-label mb-6">Our Journey</div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 font-serif-accent leading-tight">
+              <h2 className="text-2xl md:text-4xl md:text-5xl font-bold text-white mb-8 font-serif-accent leading-tight">
                 Discover Our <br />
                 <span className="text-cyan-400">Story</span>
               </h2>
@@ -154,7 +155,7 @@ const AboutPage = () => {
         <section className="py-28 px-6 max-w-7xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mb-16 text-center flex flex-col items-center">
             <div className="section-label justify-center mb-6">Our Principles</div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white font-serif-accent">Core Values</h2>
+            <h2 className="text-2xl md:text-4xl md:text-5xl font-bold text-white font-serif-accent">Core Values</h2>
           </motion.div>
 
           <motion.div 
@@ -183,7 +184,7 @@ const AboutPage = () => {
         <section className="py-28 px-6 max-w-7xl mx-auto border-t border-white/5">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="mb-16 text-center flex flex-col items-center">
             <div className="section-label justify-center mb-6">The Minds Behind</div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white font-serif-accent">Meet Our Team</h2>
+            <h2 className="text-2xl md:text-4xl md:text-5xl font-bold text-white font-serif-accent">Meet Our Team</h2>
           </motion.div>
 
           <motion.div 
@@ -202,11 +203,11 @@ const AboutPage = () => {
                       src={member.image} 
                       alt={member.name}
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
+                    loading="lazy" />
                   ) : (
                     // Fallback for missing image
                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-black group-hover:scale-105 transition-transform duration-700">
-                      <span className="text-6xl font-serif-accent text-white/10">
+                      <span className="text-4xl md:text-6xl font-serif-accent text-white/10">
                         {member.name.charAt(0)}
                       </span>
                     </div>

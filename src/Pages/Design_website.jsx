@@ -12,7 +12,7 @@ const Design_website = () => {
     <div className="relative min-h-[150vh] bg-[#0a0a0a] overflow-x-hidden font-serif">
       <div className="relative z-50 w-full max-w-7xl mx-auto mb-6 mt-8 md:mt-4">
         <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold tracking-wider transition-colors bg-black/60 p-2 md:px-4 rounded-lg backdrop-blur-md border border-white/10">
-          <span className="text-xl">←</span> GO BACK
+          <span className="text-xl">←</span>
         </button>
       </div>
       
@@ -22,7 +22,7 @@ const Design_website = () => {
           src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&q=80&w=2000" 
           alt="Background" 
           className="w-full h-full object-cover opacity-40 grayscale"
-        />
+        loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black"></div>
       </div>
 
@@ -34,7 +34,7 @@ const Design_website = () => {
         className="relative z-10 pt-32 pb-60 text-center"
       >
         <span className="text-white/60 text-xs tracking-[0.4em] uppercase mb-4 block">Websites</span>
-        <h1 className="text-white text-7xl md:text-8xl font-light leading-tight tracking-tighter">
+        <h1 className="text-white text-4xl md:text-7xl md:text-8xl font-light leading-tight tracking-tighter">
           The leader in <br /> website design
         </h1>
       <Link to="/get-started">
@@ -61,7 +61,7 @@ const Design_website = () => {
           <div className="bg-[#43362d] rounded-[2rem] shadow-[0_60px_100px_rgba(0,0,0,0.9)] overflow-hidden border border-white/5">
             
             {/* Nav inside the card */}
-            <div className="flex justify-between items-center px-10 py-8 border-b border-white/10">
+            <div className="flex justify-between items-center px-4 md:px-10 py-8 border-b border-white/10">
               <span className="text-white text-2xl italic tracking-tighter">Ceramix</span>
               <div className="flex gap-8 text-[10px] text-white/60 uppercase tracking-widest">
                 <span className="hover:text-white cursor-pointer transition">Work</span>
@@ -78,7 +78,7 @@ const Design_website = () => {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-white text-6xl italic"
+                className="text-white text-4xl md:text-6xl italic"
               >
                 Services
               </motion.h2>
@@ -102,7 +102,7 @@ const Design_website = () => {
             </div>
 
             {/* Video-style play icon */}
-            <div className="px-10 py-6 bg-black/10 flex justify-end">
+            <div className="px-4 md:px-10 py-6 bg-black/10 flex justify-end">
                <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center cursor-pointer hover:bg-white/10">
                   <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-white border-b-[6px] border-b-transparent ml-1"></div>
                </div>
@@ -115,7 +115,7 @@ const Design_website = () => {
       <motion.div 
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-[#1a1a1a]/80 backdrop-blur-2xl border border-white/10 rounded-full px-10 py-5 flex gap-10 shadow-2xl"
+        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-[#1a1a1a]/80 backdrop-blur-2xl border border-white/10 rounded-full px-4 md:px-10 py-5 flex gap-4 md:gap-10 shadow-2xl"
       >
         {['Templates', 'Design Intelligence', 'Creative Tools', 'SEO & Analytics'].map((item) => (
           <span key={item} className="text-[9px] text-white/50 uppercase tracking-[0.2em] font-sans font-bold cursor-pointer hover:text-white transition">

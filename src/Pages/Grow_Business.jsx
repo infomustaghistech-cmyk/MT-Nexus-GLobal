@@ -26,10 +26,10 @@ export default function GrowBusiness() {
   }, []);
 
   return (
-    <div className="w-full  py-16 overflow-hidden select-none">
+    <div className="w-full py-8 md:py-16 overflow-hidden select-none">
       <div className="relative z-50 w-full max-w-7xl mx-auto mb-6 mt-8 md:mt-4">
         <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold tracking-wider transition-colors bg-black/60 p-2 md:px-4 rounded-lg backdrop-blur-md border border-white/10">
-          <span className="text-xl">←</span> GO BACK
+          <span className="text-xl">←</span>
         </button>
       </div>
       {/* 1. Header Section */}
@@ -41,14 +41,12 @@ export default function GrowBusiness() {
       </div>
 
       {/* 2. Navigation Tabs (UX: Active pill follows the click) */}
-      <div className="flex justify-center items-center flex-wrap gap-x-6 gap-y-3 mb-14 px-10">
+      <div className="flex justify-center items-center flex-wrap gap-x-6 gap-y-3 mb-14 px-4 md:px-10">
         {slides.map((slide, i) => (
           <button
             key={slide.id}
             onClick={() => setIndex(i)}
-            className={`relative px-4 py-1.5 text-[15px] transition-colors duration-300 font-medium ${
-              index === i ? 'text-gray-900' : 'text-gray-400 hover:text-gray-900'
-            }`}
+            className={`relative px-4 py-1.5 text-[15px] transition-colors duration-300 font-medium ${ index === i ? 'text-gray-900' : 'text-gray-400 hover:text-gray-900' }`}
           >
             {index === i && (
               <motion.div 
@@ -76,16 +74,14 @@ export default function GrowBusiness() {
                 scale: index === i ? 1 : 0.85,
                 opacity: index === i ? 1 : 0.4 
               }}
-              className={`min-w-[600px] h-[550px] rounded-[40px] flex flex-col md:flex-row items-center p-10 md:p-20 transition-all duration-700 shadow-xl ${slide.color}`}
+              className={`min-w-[600px] h-auto md:h-[550px] rounded-[40px] flex flex-col md:flex-row items-center p-4 md:p-10 md:p-20 transition-all duration-700 shadow-xl ${slide.color}`}
             >
               {/* Content Side */}
               <div className="w-full md:w-1/2 pr-4">
                 <h2 className={`text-[42px] leading-tight font-serif mb-6 ${slide.textColor}`}>
                   {slide.title}
                 </h2>
-                <p className={`text-[19px] leading-relaxed max-w-[380px] ${
-                  slide.id === 'blog' ? 'text-gray-400' : 'text-gray-600'
-                }`}>
+                <p className={`text-[19px] leading-relaxed max-w-[380px] ${ slide.id === 'blog' ? 'text-gray-400' : 'text-gray-600' }`}>
                   {slide.desc}
                 </p>
               </div>
@@ -94,6 +90,7 @@ export default function GrowBusiness() {
               <div className="w-full md:w-1/2 h-full flex items-center justify-center mt-10 md:mt-0">
                 <img 
                   src={slide.img} 
+                  loading="lazy"
                   className="w-full h-auto max-h-[400px] rounded-2xl shadow-2xl object-cover" 
                   alt="preview" 
                 />
@@ -108,9 +105,7 @@ export default function GrowBusiness() {
             <button
               key={i}
               onClick={() => setIndex(i)}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                index === i ? 'w-8 bg-black' : 'w-1.5 bg-[#ccc]'
-              }`}
+              className={`h-1.5 rounded-full transition-all duration-500 ${ index === i ? 'w-8 bg-black' : 'w-1.5 bg-[#ccc]' }`}
             />
           ))}
         </div>

@@ -21,12 +21,12 @@ const Template = () => {
     <div className="min-h-screen bg-[#FDFDFD] text-[#121212] font-sans">
       <div className="relative z-50 w-full max-w-7xl mx-auto mb-6 mt-8 md:mt-4">
         <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-cyan-500 hover:text-cyan-400 font-bold tracking-wider transition-colors bg-white/80 p-2 md:px-4 rounded-lg backdrop-blur-md border border-gray-200 shadow-md">
-          <span className="text-xl">←</span> GO BACK
+          <span className="text-xl">←</span>
         </button>
       </div>
       {/* 1. Header Section (Image 1 jaisa) */}
       <header className="px-12 pt-24 pb-16 border-b border-gray-100 flex flex-col md:flex-row justify-between items-start gap-8">
-        <h1 className="text-6xl md:text-8xl font-medium tracking-tight leading-[0.9] max-w-3xl">
+        <h1 className="text-4xl md:text-6xl md:text-8xl font-medium tracking-tight leading-[0.9] max-w-3xl">
           Make any website template yours with ease.
         </h1>
         <p className="max-w-[320px] text-[15px] leading-relaxed text-gray-600 mt-4">
@@ -34,7 +34,7 @@ const Template = () => {
         </p>
       </header>
 
-      <div className="flex px-12 py-12 gap-16">
+      <div className="flex px-12 py-12 gap-6 md:gap-16">
         {/* 2. Sidebar Filters (Video aur Image 2 jaisa) */}
         <aside className="w-60 shrink-0 sticky top-10 h-fit hidden lg:block">
           <div className="mb-12">
@@ -80,7 +80,7 @@ const Template = () => {
                 className={`group cursor-pointer ${index === 1 ? 'md:mt-16' : ''}`}
               >
                 <div className="aspect-[4/3] bg-[#F2F2F2] overflow-hidden rounded-sm relative">
-                  <img src={item.img} alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src={item.img} alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors" />
                 </div>
                 <div className="mt-5 space-y-1">
@@ -92,15 +92,15 @@ const Template = () => {
           </div>
 
           {/* 4. Blueprint AI Dark Banner (Image 4 & 5 jaisa) */}
-          <section className="bg-[#121212] rounded-2xl p-16 md:p-24 text-white flex flex-col lg:flex-row items-center justify-between gap-16 overflow-hidden relative">
+          <section className="bg-[#121212] rounded-2xl p-6 md:p-16 md:p-24 text-white flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-16 overflow-hidden relative">
             <div className="max-w-md z-10">
-              <h2 className="text-4xl md:text-5xl font-medium mb-8 leading-[1.1]">
+              <h2 className="text-2xl md:text-4xl md:text-5xl font-medium mb-8 leading-[1.1]">
                 Start with the Blueprint AI Website Builder
               </h2>
               <p className="text-gray-400 text-sm mb-10 leading-relaxed">
                 Create a unique and professional website in minutes. Get expert design guidance, premium starter content, and curated styling options.
               </p>
-              <button className="bg-white text-black font-bold text-[11px] tracking-[0.2em] px-10 py-5 uppercase hover:bg-gray-200 transition-all flex items-center gap-3">
+              <button className="bg-white text-black font-bold text-[11px] tracking-[0.2em] px-4 md:px-10 py-5 uppercase hover:bg-gray-200 transition-all flex items-center gap-3">
                 Build Site <ArrowRight size={14} />
               </button>
             </div>

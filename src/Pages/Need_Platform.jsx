@@ -11,12 +11,12 @@ const Card = ({ title, description, dark, children, bgImage, to = "#" }) => (
       visible: { opacity: 80, y: 80 }
     }}
     transition={{ duration: 0.5 }}
-    className={`w-full h-[350px] rounded-[2.5rem] relative overflow-hidden shadow-xl hover:shadow-2xl group transition-all duration-500 ${dark ? ' text-white' : 'bg-white text-black'}`}
+    className={`w-full h-auto md:h-[350px] rounded-[2.5rem] relative overflow-hidden shadow-xl hover:shadow-2xl group transition-all duration-500 ${dark ? ' text-white' : 'bg-white text-black'}`}
   >
     <Link to={to} className="flex flex-col justify-between h-full p-8 w-full">
       
         <div className="absolute inset-0 opacity-90 group-hover:opacity-100 transition-opacity duration-500">
-          <img src={bgImage} alt="" className="w-full h-full object-cover" />
+          <img src={bgImage} alt="" className="w-full h-full object-cover" loading="lazy" />
         </div>
       
       
@@ -24,7 +24,7 @@ const Card = ({ title, description, dark, children, bgImage, to = "#" }) => (
         <h3 className="text-2xl text-white font-bold mb-4 tracking-tight group-hover:text-gray-300 transition-colors leading-tight">
           {title}
         </h3>
-        <p className="text-[14px] opacity-100 text-white leading-relaxed ">
+        <p className="text-[14px] opacity-100 text-white leading-relaxed">
           {description}
         </p>
       </div>
@@ -47,7 +47,7 @@ const Card = ({ title, description, dark, children, bgImage, to = "#" }) => (
 
 const Platform = () => {
   return (
-    <div className=" mt-1 min-h-screen font-sans  selection:text-black relative overflow-hidden pb-20">
+    <div className="mt-1 min-h-screen font-sans selection:text-black relative overflow-hidden pb-20">
       
       {/* <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 blur-[120px] rounded-full" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/10 blur-[120px] rounded-full" /> */}
@@ -63,8 +63,8 @@ const Platform = () => {
               <Sparkles className="text-blue-500" size={32} />
               <span className="text-blue-500 font-semibold tracking-widest uppercase text-sm">Our Services</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-none text-white">
-              Everything you need <br /> <span className="text-gray-500 text-4xl md:text-6xl">on one platform.</span>
+            <h1 className="text-3xl md:text-5xl md:text-7xl font-bold tracking-tighter leading-none text-white">
+              Everything you need <br /> <span className="text-gray-500 text-2xl md:text-4xl md:text-6xl">on one platform.</span>
             </h1>
           </div>
           <p className="text-lg text-gray-300 max-w-md font-light leading-relaxed mb-2">
@@ -84,32 +84,32 @@ const Platform = () => {
           }}
         >
           {/* 1. Website */}
-          <Card title="Website Customization" to="/services/web_customization" description="Tailored web experiences built with modern frameworks." bgImage="src/assets/Gemini_Generated_Image_e3v7i1e3v7i1e3v7.png" dark={true}>
+          <Card title="Website Customization" to="/services/web_customization" description="Tailored web experiences built with modern frameworks." bgImage="src/assets/Gemini_Generated_Image_e3v7i1e3v7i1e3v7.webp" dark={true}>
          
           </Card>
 
           {/* 2. App */}
-          <Card title="App Development" to="/services/app_customization" description="High-performance iOS and Android applications." bgImage="src/assets/Gemini_Generated_Image_9u8h7z9u8h7z9u8h.png" dark={true}>
+          <Card title="App Development" to="/services/app_customization" description="High-performance iOS and Android applications." bgImage="src/assets/Gemini_Generated_Image_9u8h7z9u8h7z9u8h.webp" dark={true}>
             
           </Card>
 
           {/* 3. Graphic Design - NEW */}
-          <Card title="Graphic Design" to="/services/graphic-design" description="Creative logos and branding assets that stand out." bgImage={"src/assets/Gemini_Generated_Image_cx1um5cx1um5cx1u.png"} dark={true}>
+          <Card title="Graphic Design" to="/services/graphic-design" description="Creative logos and branding assets that stand out." bgImage={"src/assets/Gemini_Generated_Image_cx1um5cx1um5cx1u.webp"} dark={true}>
            
           </Card>
 
           {/* 4. Video Editing - NEW */}
-          <Card title="Video Editing" to="/services/video-editing" description="Professional post-production and cinematic storytelling." bgImage={"src/assets/Gemini_Generated_Image_o7yvubo7yvubo7yv.png"} dark={true}>
+          <Card title="Video Editing" to="/services/video-editing" description="Professional post-production and cinematic storytelling." bgImage={"src/assets/Gemini_Generated_Image_o7yvubo7yvubo7yv.webp"} dark={true}>
             
           </Card>
 
           {/* 5. WordPress */}
-          <Card title="WordPress Solutions" to="/services/wordpress" description="Secure and scalable WordPress development." bgImage={"src/assets/Gemini_Generated_Image_6qmnr56qmnr56qmn.png"} dark={true}>
+          <Card title="WordPress Solutions" to="/services/wordpress" description="Secure and scalable WordPress development." bgImage={"src/assets/Gemini_Generated_Image_6qmnr56qmnr56qmn.webp"} dark={true}>
            
           </Card>
 
           {/* 6. Shopify */}
-          <Card title="Shopify Stores" to="/services/shopify" description="Optimized e-commerce stores for maximum conversion." bgImage={"src/assets/Gemini_Generated_Image_ju3d1xju3d1xju3d.png"} dark={true}>
+          <Card title="Shopify Stores" to="/services/shopify" description="Optimized e-commerce stores for maximum conversion." bgImage={"src/assets/Gemini_Generated_Image_ju3d1xju3d1xju3d.webp"} dark={true}>
              
           </Card>
           

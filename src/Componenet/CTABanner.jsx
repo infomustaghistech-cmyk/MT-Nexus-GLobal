@@ -60,10 +60,10 @@ const CTABanner = () => {
         .font-serif-accent { font-family: 'Playfair Display', serif; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
       `}</style>
-      <section className="py-20 sm:py-32 px-4 bg-[#050816]">
+      <section className="py-10 md:py-20 sm:py-32 px-4 bg-[#050816]">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto text-center border border-white/[0.08] hover:border-cyan-400/40 rounded-3xl p-10 sm:p-20 relative overflow-hidden bg-white/[0.02] backdrop-blur-xl shadow-2xl hover:shadow-[0_20px_60px_rgba(34,211,238,0.25)] hover:-translate-y-2 transition-all duration-500 group"
+          className="max-w-4xl mx-auto text-center border border-white/[0.08] hover:border-cyan-400/40 rounded-3xl p-4 md:p-10 sm:p-20 relative overflow-hidden bg-white/[0.02] backdrop-blur-xl shadow-2xl hover:shadow-[0_20px_60px_rgba(34,211,238,0.25)] hover:-translate-y-2 transition-all duration-500 group"
         >
           {/* Soft background glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[400px] bg-cyan-500/20 group-hover:bg-cyan-500/40 transition-all duration-500 blur-[100px] pointer-events-none rounded-full" />
@@ -77,10 +77,12 @@ const CTABanner = () => {
             <p className="text-white/50 text-sm sm:text-base font-medium mb-10 max-w-md mx-auto leading-relaxed">
               Share your vision with us. We'll handle the rest — from concept to launch.
             </p>
-            <Link to="/contact" className="btn-primary-cta w-full sm:w-auto justify-center">
-              <span>Get Free Consultation</span>
-              <ArrowRight size={14} className="relative z-10" />
-            </Link>
+            <motion.div whileTap={{ scale: 0.95 }} className="inline-block w-full sm:w-auto">
+              <Link to="/contact" className="btn-primary-cta w-full sm:w-auto justify-center touch-target">
+                <span>Get Free Consultation</span>
+                <ArrowRight size={14} className="relative z-10" />
+              </Link>
+            </motion.div>
             <p className="mt-6 text-[9px] sm:text-[10px] tracking-[0.2em] text-white/30 uppercase font-mono font-semibold">
               No commitment required
             </p>

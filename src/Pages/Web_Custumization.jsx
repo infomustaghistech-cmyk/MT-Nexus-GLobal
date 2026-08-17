@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import videoBg from '@/assets/15254965_1920_1080_24fps.mp4';
+import videoBg from '@/assets/15254965_1920_1080_24fps-optimized-v2.mp4';
+import videoPoster from '@/assets/15254965_1920_1080_24fps-poster.webp';
 
 import { motion } from 'framer-motion';
 import LazyVideo from '../Componenet/LazyVideo';
@@ -30,7 +31,7 @@ const WebsiteCustomization = () => {
       plusTags: "+ 5",
       reviews: "276 Reviews",
       rating: "4.8",
-      img: "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg"
+      img: "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.webp"
     },
     {
       name: "Rexsoft Inc",
@@ -41,7 +42,7 @@ const WebsiteCustomization = () => {
       plusTags: "+ 24",
       reviews: "49 Reviews",
       rating: "5.0",
-      img: "https://object.pixocial.com/pixocial/dmxffni837f1xrj8pki9xgrl.jpg"
+      img: "https://object.pixocial.com/pixocial/dmxffni837f1xrj8pki9xgrl.webp"
     }
   ];
 
@@ -49,7 +50,7 @@ const WebsiteCustomization = () => {
     <div className="min-h-screen pt-28 pb-16 px-6">
 
  <div className="fixed inset-0 -z-10 w-full h-full">
-              <LazyVideo src={videoBg} className="w-full h-full object-cover brightness-[0.3]" />
+              <LazyVideo src={videoBg} poster={videoPoster} className="w-full h-full object-cover brightness-[0.3]" />
             </div>
 
       <div className="max-w-7xl mx-auto">
@@ -58,15 +59,15 @@ const WebsiteCustomization = () => {
           onClick={() => navigate(-1)} 
           className="mb-8 flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold tracking-wider transition-colors"
         >
-          <span className="text-xl">←</span> GO BACK
+          <span className="text-xl">←</span>
         </button>
 
         {/* Main Heading & Client Instructions */}
-        <div className=" p-8 lg:p-12 rounded-3xl  mb-16">
+        <div className="p-8 lg:p-12 rounded-3xl mb-16">
           <motion.h1 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-5xl lg:text-5xl font-extrabold  mb-6"
+            className="text-3xl md:text-5xl lg:text-5xl font-extrabold mb-6"
           >
             <span className='text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500'>
 
@@ -74,7 +75,7 @@ const WebsiteCustomization = () => {
             </span>
           </motion.h1>
           
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-10">
             <div className="space-y-4">
               <p className="text-gray-300 text-lg leading-relaxed">
                 To transform your existing website into a modern, high-performance platform, we require specific details. Please follow the instructions below to ensure a seamless and efficient start to your project:
@@ -89,7 +90,7 @@ const WebsiteCustomization = () => {
             </div>
             
             <div className="p-8 lg:p-10 rounded-2xl border-l-8 border-[#358acc] flex flex-col justify-center">
-              <h3 className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 text-4xl mb-4">Important Instructions</h3>
+              <h3 className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 text-2xl md:text-4xl mb-4">Important Instructions</h3>
               <p className="text-sm text-gray-300 leading-relaxed italic">
                 "We strongly recommend taking a complete backup of your current website before we begin the customization process. Clear communication and detailed instructions help us deliver your project faster and with maximum precision."
               </p>
@@ -115,7 +116,7 @@ const WebsiteCustomization = () => {
                 Header: Profile & Name
 
                 <div className="flex gap-4 mb-4">
-                  <img src={p.img} alt={p.name} className="w-16 h-16 rounded-full object-cover border-2 border-gray-100" />
+                  <img src={p.img} alt={p.name} className="w-16 h-16 rounded-full object-cover border-2 border-gray-100" loading="lazy" />
                   <div>
                     <h4 className="font-bold text-gray-900 text-lg">{p.name}</h4>
                     <p className="text-sm font-semibold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-md inline-block">

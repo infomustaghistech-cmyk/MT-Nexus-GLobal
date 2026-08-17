@@ -48,7 +48,7 @@ const Contact = () => {
       <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-cyan-600/20 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 relative z-10">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 md:gap-16 relative z-10">
         
         {/* Left Side: Content */}
         <motion.div 
@@ -61,7 +61,7 @@ const Contact = () => {
             <span className="text-cyan-400 font-bold tracking-[0.2em] uppercase text-sm mb-2 block">
               Get In Touch
             </span>
-            <h2 className="text-5xl lg:text-7xl font-extrabold text-white leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight">
               Let's Build <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
                 Together.
@@ -155,7 +155,7 @@ const Contact = () => {
             <button 
               type="submit" 
               disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 px-10 rounded-xl hover:opacity-90 transition-all shadow-lg hover:shadow-cyan-500/25 disabled:opacity-50 tracking-widest uppercase text-sm"
+              className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 px-4 md:px-10 rounded-xl hover:opacity-90 transition-all shadow-lg hover:shadow-cyan-500/25 disabled:opacity-50 tracking-widest uppercase text-sm"
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
@@ -167,7 +167,7 @@ const Contact = () => {
       <div className="fixed bottom-6 right-6 z-50 cursor-pointer transform hover:scale-110 hover:-translate-y-2 transition-all duration-300">
         <a href="https://wa.me/message/7KI5VLR44GFUL1" target='_blank' rel="noopener noreferrer">
           {/* Ensure correct path for your image */}
-          <img src="/WhatsApp_Image_2026-03-10_at_2.06.44_AM-removebg-preview.png" alt="WhatsApp" className="w-16 h-16 md:w-20 md:h-20 drop-shadow-[0_0_15px_rgba(37,211,102,0.5)]" />
+          <img src="/WhatsApp_Image_2026-03-10_at_2.06.44_AM-removebg-preview.webp" alt="WhatsApp" className="w-16 h-16 md:w-20 md:h-20 drop-shadow-[0_0_15px_rgba(37,211,102,0.5)]" loading="lazy" />
         </a>
       </div>
 

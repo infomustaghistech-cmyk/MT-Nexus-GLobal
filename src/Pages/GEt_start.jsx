@@ -64,7 +64,7 @@ const GetStart = () => {
 
             <div className="space-y-3">
               <button className="w-full h-[54px] border border-black flex items-center justify-center gap-3 hover:bg-gray-50 transition-all group">
-                <img src="https://www.google.com/favicon.ico" alt="G" className="w-4 h-4" />
+                <img src="https://www.google.com/favicon.ico" alt="G" className="w-4 h-4" loading="lazy" />
                 <span className="text-[11px] font-bold uppercase tracking-[0.2em]">Continue with Google</span>
               </button>
               
@@ -101,7 +101,7 @@ const GetStart = () => {
           </div>
         </header></Link>
 
-        <main className="flex-grow flex items-center justify-center px-10 lg:px-24">
+        <main className="flex-grow flex items-center justify-center px-4 md:px-10 lg:px-24">
           <div className="w-full max-w-[900px] flex flex-col lg:flex-row gap-12 lg:gap-24">
             
             {/* Left Info Column */}
@@ -175,7 +175,7 @@ const GetStart = () => {
           {step === 2 ? (
             <button 
               onClick={() => setStep(1)}
-              className="px-10 py-[14px] border border-zinc-200 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-zinc-50 transition-colors"
+              className="px-4 md:px-10 py-[14px] border border-zinc-200 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-zinc-50 transition-colors"
             >
               Back
             </button>
@@ -201,7 +201,7 @@ const GetStart = () => {
           src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1000&auto=format&fit=crop" 
           className="w-full h-full object-cover brightness-95" 
           alt="onboarding context" 
-        />
+        loading="lazy" />
         {/* Sidebar Tools Overlay */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 bg-black/10 backdrop-blur-sm p-2 flex flex-col gap-5 text-white/90 rounded-l-lg border-l border-y border-white/20">
             <Search size={18} strokeWidth={2.5} className="cursor-pointer hover:scale-110 transition-transform" />

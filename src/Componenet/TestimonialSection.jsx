@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Star, Quote, Sparkles } from 'lucide-react';
 
 const testimonialsData = [
@@ -87,7 +87,11 @@ const testimonialsData = [
 
 const TestimonialCard = ({ testimonial }) => {
   return (
-    <div className="w-full max-w-4xl mx-auto shrink-0 bg-[#0a0f1d]/50 backdrop-blur-md rounded-[24px] p-8 md:p-10 border border-black hover:border-black hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_30px_60px_rgba(34,211,238,0.15)] transition-all duration-500 group relative overflow-hidden flex flex-col justify-between select-none">
+    <motion.div 
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      className="w-full h-full bg-[#0a0f1d]/50 backdrop-blur-md rounded-[24px] p-8 md:p-10 border border-black hover:border-black hover:shadow-[0_30px_60px_rgba(34,211,238,0.15)] transition-all duration-500 group relative overflow-hidden flex flex-col justify-between select-none touch-target"
+    >
       {/* Decorative Subtle Glowing Corner */}
       <div className="absolute -top-10 -right-10 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl group-hover:bg-cyan-500/20 transition-all duration-500 pointer-events-none" />
 
@@ -133,13 +137,13 @@ const TestimonialCard = ({ testimonial }) => {
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 const TestimonialSection = () => {
   return (
-    <section className="relative w-full py-20 overflow-hidden bg-transparent">
+    <section className="relative w-full py-10 md:py-20 overflow-hidden bg-transparent">
       {/* Ambient Lighting Orbs */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[35rem] h-[25rem] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none -z-0" />
       <div className="absolute bottom-10 right-1/4 w-[25rem] h-[20rem] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none -z-0" />
@@ -158,12 +162,19 @@ const TestimonialSection = () => {
         </p>
       </div>
 
-      {/* 1 Column Layout */}
-      <div className="flex flex-col gap-8 relative z-10 w-full px-6">
+      {/* Horizontal Swipeable Carousel */}
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flex flex-row overflow-x-auto gap-6 relative z-10 w-full px-6 pb-8 no-scrollbar snap-x-mandatory"
+      >
         {testimonialsData.map((testimonial, idx) => (
-          <TestimonialCard key={idx} testimonial={testimonial} />
+          <div key={idx} className="w-[85vw] md:w-[600px] shrink-0 snap-align-center">
+            <TestimonialCard testimonial={testimonial} />
+          </div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

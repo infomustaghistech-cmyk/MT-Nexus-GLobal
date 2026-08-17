@@ -73,7 +73,7 @@ const BlogSection = () => {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex flex-row overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 pb-8 md:pb-0 no-scrollbar snap-x-mandatory">
           {blogPosts.map((post, index) => (
             <motion.div
               key={post.id}
@@ -81,7 +81,8 @@ const BlogSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="group flex flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[#0a0f1d] backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_50px_rgba(34,211,238,0.12)] hover:border-cyan-400/30"
+              whileTap={{ scale: 0.98 }}
+              className="w-[85vw] md:w-auto shrink-0 snap-align-center group flex flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[#0a0f1d] backdrop-blur-md shadow-[0_15px_40px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_50px_rgba(34,211,238,0.12)] hover:border-cyan-400/30 touch-target cursor-pointer"
             >
               {/* Image Container */}
               <div className="relative h-60 w-full overflow-hidden">
@@ -89,7 +90,7 @@ const BlogSection = () => {
                   src={post.image} 
                   alt={post.title} 
                   className="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110" 
-                />
+                loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1d] via-transparent to-transparent opacity-90" />
                 <div className="absolute top-4 left-4 rounded-full border border-cyan-400/30 bg-black/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-cyan-300 backdrop-blur-md">
                   {post.category}

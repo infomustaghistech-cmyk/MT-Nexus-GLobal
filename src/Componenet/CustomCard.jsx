@@ -16,7 +16,7 @@ const CustomCard = ({ title, desc, path, children }) => {
             alt={title} 
             className="w-full h-full object-contain"
             // Agar image load na ho to ye error handle karega
-            onError={(e) => { e.target.style.display = 'none'; }} 
+            onError={(e) = loading="lazy"> { e.target.style.display = 'none'; }} 
           />
         ) : (
           /* Fallback agar image path na mile */
