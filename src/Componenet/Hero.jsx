@@ -140,7 +140,8 @@ const Carousel = () => {
                   draggable="false"
                   className="w-full h-full object-cover transition-all duration-700"
                   style={{ filter: isActive ? 'none' : 'brightness(0.4) grayscale(0.5)' }}
-                loading="lazy" />
+                  fetchPriority="high"
+                />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
 

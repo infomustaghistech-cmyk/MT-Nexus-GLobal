@@ -118,14 +118,17 @@ const BackToTopButton = () => {
   );
 };
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <ScrollProgress />
-      <BackToTopButton />
+const AppContent = () => {
+  const { pathname } = useLocation();
+  const isAdminRoute = pathname.startsWith('/admin');
 
-      <Navbar />
+  return (
+    <>
+      <ScrollToTop />
+      {!isAdminRoute && <ScrollProgress />}
+      {!isAdminRoute && <BackToTopButton />}
+
+      {!isAdminRoute && <Navbar />}
       <Suspense fallback={<LoadingScreen />}>
         <Routes>
           <Route path="/design-website" element={<Design_website />} />
@@ -157,10 +160,17 @@ const App = () => {
           <Route path='/contact' element={<ContactPage />} />
           <Route path='/feedback' element={<FeedbackPage />} />
         </Routes>
-        <CTABanner />
-        <Footer />
+        {!isAdminRoute && <CTABanner />}
+        {!isAdminRoute && <Footer />}
       </Suspense>
+    </>
+  );
+};
 
+const App = () => {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   )
 }

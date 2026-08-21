@@ -80,7 +80,7 @@ const Navbar = () => {
 
           {/* Logo */}
           <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="z-[60] flex items-center h-full">
-            <img src={logo} alt="MT Nexus" className={`object-contain drop-shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:drop-shadow-[0_0_25px_rgba(6,182,212,0.8)] hover:scale-105 transition-all duration-500 cursor-pointer ${isScrolled ? 'h-12' : 'h-28 md:h-32'}`} loading="lazy" />
+            <img src={logo} alt="MT Nexus" className={`object-contain drop-shadow-[0_0_15px_rgba(6,182,212,0.4)] hover:drop-shadow-[0_0_25px_rgba(6,182,212,0.8)] hover:scale-105 transition-all duration-500 cursor-pointer ${isScrolled ? 'h-12' : 'h-28 md:h-32'}`} fetchPriority="high" />
           </Link>
 
           {/* Desktop Navigation (Hidden on Mobile) */}

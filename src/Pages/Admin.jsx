@@ -11,13 +11,15 @@ const Icon = {
   Edit: () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>,
   Upload: () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>,
   Eye: () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>,
-  Link: () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+  Link: () => <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>,
+  Blogs: () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" /></svg>,
+  Services: () => <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
 };
 
 // ─── Stat Card & Section Header ────────────────────────────────────────────────
 const StatCard = ({ label, value, gradient, icon: IconComp }) => (
-  <div className="relative bg-[#0d0d0d] border border-white/[0.07] rounded-2xl p-5 overflow-hidden group hover:border-white/20 transition-all duration-300">
-    <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+  <div className="relative bg-white/[0.02] border border-white/[0.08] rounded-3xl p-6 overflow-hidden group hover:border-cyan-400/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(34,211,238,0.1)] transition-all duration-300 backdrop-blur-xl">
+    <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-300`} />
     <div className="flex items-start justify-between">
       <div>
         <p className="text-gray-600 text-xs uppercase tracking-widest font-medium mb-2">{label}</p>
@@ -66,8 +68,20 @@ const Admin = () => {
   });
   const [feedbackScreenshot, setFeedbackScreenshot] = useState(null);
 
+  // Naya: Blogs state
+  const [blogs, setBlogs] = useState([]);
+  const [editBlogId, setEditBlogId] = useState(null);
+  const [blogForm, setBlogForm] = useState({ title: '', content: '' });
+  const [blogImage, setBlogImage] = useState(null);
+
+  // Naya: Services state
+  const [services, setServices] = useState([]);
+  const [editServiceId, setEditServiceId] = useState(null);
+  const [serviceForm, setServiceForm] = useState({ name: '', description: '' });
+  const [serviceIcon, setServiceIcon] = useState(null);
+
   useEffect(() => {
-    fetchProjects(); fetchMessages(); loadFeedbacks();
+    fetchProjects(); fetchMessages(); loadFeedbacks(); fetchBlogs(); fetchServices();
   }, []);
 
   const fetchProjects = async () => {
@@ -81,6 +95,14 @@ const Admin = () => {
   const loadFeedbacks = async () => {
     const { data } = await supabase.from('feedbacks').select('*').order('created_at', { ascending: false });
     setFeedbacks(data || []);
+  };
+  const fetchBlogs = async () => {
+    const { data } = await supabase.from('blogs').select('*').order('created_at', { ascending: false });
+    setBlogs(data || []);
+  };
+  const fetchServices = async () => {
+    const { data } = await supabase.from('services').select('*').order('created_at', { ascending: false });
+    setServices(data || []);
   };
 
   const handleLogin = (e) => {
@@ -198,6 +220,86 @@ const Admin = () => {
     }
   };
 
+  // --- Blog Handlers ---
+  const handleAddOrUpdateBlog = async (e) => {
+    e.preventDefault();
+    if (!editBlogId && !blogImage) return alert('Please upload a blog image!');
+    setIsUploading(true);
+    try {
+      let imageUrl = blogForm.image_url; 
+      if (blogImage) imageUrl = await uploadFileToBucket(blogImage, 'blogs');
+      
+      const data = { title: blogForm.title, content: blogForm.content, image_url: imageUrl };
+      if (editBlogId) {
+        await supabase.from('blogs').update(data).eq('id', editBlogId);
+        alert('Blog Updated! 🚀');
+      } else {
+        await supabase.from('blogs').insert([data]);
+        alert('Blog Added! 🚀');
+      }
+      fetchBlogs(); resetBlogForm();
+    } catch (error) { alert('Error saving blog.'); } 
+    finally { setIsUploading(false); }
+  };
+  
+  const resetBlogForm = () => {
+    setEditBlogId(null); setBlogForm({ title: '', content: '' }); setBlogImage(null);
+  };
+  
+  const handleEditBlog = (blog) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setEditBlogId(blog.id);
+    setBlogForm({ title: blog.title, content: blog.content, image_url: blog.image_url });
+    setBlogImage(null);
+  };
+  
+  const deleteBlog = async (id) => {
+    if (window.confirm('Delete this blog?')) {
+      await supabase.from('blogs').delete().eq('id', id);
+      setBlogs(blogs.filter((b) => b.id !== id));
+    }
+  };
+
+  // --- Service Handlers ---
+  const handleAddOrUpdateService = async (e) => {
+    e.preventDefault();
+    if (!editServiceId && !serviceIcon) return alert('Please upload a service icon!');
+    setIsUploading(true);
+    try {
+      let iconUrl = serviceForm.icon_url; 
+      if (serviceIcon) iconUrl = await uploadFileToBucket(serviceIcon, 'services');
+      
+      const data = { name: serviceForm.name, description: serviceForm.description, icon_url: iconUrl };
+      if (editServiceId) {
+        await supabase.from('services').update(data).eq('id', editServiceId);
+        alert('Service Updated! 🚀');
+      } else {
+        await supabase.from('services').insert([data]);
+        alert('Service Added! 🚀');
+      }
+      fetchServices(); resetServiceForm();
+    } catch (error) { alert('Error saving service.'); } 
+    finally { setIsUploading(false); }
+  };
+  
+  const resetServiceForm = () => {
+    setEditServiceId(null); setServiceForm({ name: '', description: '' }); setServiceIcon(null);
+  };
+  
+  const handleEditService = (service) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setEditServiceId(service.id);
+    setServiceForm({ name: service.name, description: service.description, icon_url: service.icon_url });
+    setServiceIcon(null);
+  };
+  
+  const deleteService = async (id) => {
+    if (window.confirm('Delete this service?')) {
+      await supabase.from('services').delete().eq('id', id);
+      setServices(services.filter((s) => s.id !== id));
+    }
+  };
+
   if (!isAuthenticated) {
     // ... Login form remains exactly the same ...
     return (
@@ -221,16 +323,18 @@ const Admin = () => {
 
   const tabs = [
     { id: 'projects', label: 'Projects', icon: Icon.Projects, badge: allProjects.length, color: 'text-cyan-400' },
-    { id: 'feedback', label: 'Reviews (Images)', icon: Icon.Feedback, badge: feedbacks.length, color: 'text-amber-400' },
+    { id: 'services', label: 'Services', icon: Icon.Services, badge: services.length, color: 'text-purple-400' },
+    { id: 'blogs', label: 'Blogs', icon: Icon.Blogs, badge: blogs.length, color: 'text-emerald-400' },
+    { id: 'feedback', label: 'Reviews', icon: Icon.Feedback, badge: feedbacks.length, color: 'text-amber-400' },
     { id: 'messages', label: 'Messages', icon: Icon.Messages, badge: messages.length, color: 'text-blue-400' },
   ];
   const showUrlField = ['Websites', 'Apps', 'Wordpress', 'Shopify'].includes(formData.category);
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white">
+    <div className="min-h-screen bg-[#050a15] text-white">
       {/* Top Navbar */}
-      <div className="sticky top-0 z-40 bg-[#050505]/90 backdrop-blur-xl border-b border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+      <div className="sticky top-0 z-40 bg-[#050a15]/90 backdrop-blur-xl border-b border-white/[0.08]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center text-white text-sm font-bold">A</div>
             <span className="font-bold text-white tracking-tight">Admin Dashboard</span>
@@ -240,10 +344,10 @@ const Admin = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 md:py-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-          <StatCard label="Total Projects" value={allProjects.length} gradient="from-cyan-500 to-blue-600" icon={Icon.Projects} />
-          <StatCard label="Uploaded Reviews" value={feedbacks.length} gradient="from-amber-500 to-orange-500" icon={Icon.Feedback} />
-          <StatCard label="Inquiries" value={messages.length} gradient="from-blue-500 to-violet-600" icon={Icon.Messages} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <StatCard label="Total Projects" value={allProjects.length} gradient="from-cyan-400 to-blue-500" icon={Icon.Projects} />
+          <StatCard label="Uploaded Reviews" value={feedbacks.length} gradient="from-amber-400 to-orange-500" icon={Icon.Feedback} />
+          <StatCard label="Inquiries" value={messages.length} gradient="from-blue-400 to-indigo-500" icon={Icon.Messages} />
         </div>
 
         {/* Tab Navigation */}
@@ -427,6 +531,110 @@ const Admin = () => {
                 ))}
               </div>
             ) : <p className="text-center py-10 md:py-20 text-gray-600">📭 No messages received yet.</p>}
+          </div>
+        )}
+
+        {/* ══════════════════ SERVICES TAB ══════════════════ */}
+        {activeTab === 'services' && (
+          <div>
+            <div className="flex items-center justify-between mb-8">
+              <SectionHeader title={editServiceId ? "Edit Service" : "Add New Service"} subtitle="Service Management" accent="text-purple-400" />
+              {editServiceId && (
+                <button onClick={resetServiceForm} className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl text-sm font-bold text-white transition-all">Cancel Edit</button>
+              )}
+            </div>
+
+            <form onSubmit={handleAddOrUpdateService} className={`bg-white/[0.02] backdrop-blur-xl border ${editServiceId ? 'border-purple-500/50 shadow-[0_0_30px_rgba(168,85,247,0.15)]' : 'border-white/[0.08]'} rounded-3xl p-8 mb-12 space-y-6 transition-all duration-500`}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Service Name</label>
+                  <input type="text" placeholder="e.g. Web Development" className="w-full p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-white outline-none focus:border-purple-500/60 transition-colors" value={serviceForm.name} onChange={(e) => setServiceForm({ ...serviceForm, name: e.target.value })} required />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Service Icon {editServiceId ? "(Leave blank to keep existing)" : "*"}</p>
+                  <input type="file" accept="image/*" className="w-full text-sm text-gray-500 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:bg-purple-500/10 file:text-purple-400 cursor-pointer" onChange={(e) => setServiceIcon(e.target.files[0])} required={!editServiceId} />
+                </div>
+              </div>
+              <div>
+                <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Description</label>
+                <textarea rows="3" placeholder="Brief description of the service..." className="w-full p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-white outline-none focus:border-purple-500/60 resize-none transition-colors" value={serviceForm.description} onChange={(e) => setServiceForm({ ...serviceForm, description: e.target.value })} required />
+              </div>
+              <button type="submit" disabled={isUploading} className={`w-full ${editServiceId ? 'bg-gradient-to-r from-emerald-500 to-teal-500' : 'bg-gradient-to-r from-purple-500 to-indigo-600'} hover:opacity-90 p-4 rounded-2xl font-bold flex items-center justify-center gap-2 text-white`}>
+                {isUploading ? 'Saving...' : editServiceId ? '✓ Save Changes' : <><Icon.Upload /> Add Service</>}
+              </button>
+            </form>
+
+            <SectionHeader title={`All Services (${services.length})`} subtitle="Manage Services" accent="text-purple-400" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {services.length > 0 ? services.map((service) => (
+                <div key={service.id} className="group bg-white/[0.02] backdrop-blur-xl border border-white/[0.08] rounded-2xl p-5 hover:border-purple-500/30 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 mb-4 p-2 flex items-center justify-center">
+                    <img src={service.icon_url} alt="" className="w-full h-full object-contain" />
+                  </div>
+                  <h3 className="font-bold text-white mb-2">{service.name}</h3>
+                  <p className="text-xs text-gray-400 line-clamp-3 mb-4">{service.description}</p>
+                  <div className="flex items-center gap-3 pt-4 border-t border-white/[0.05]">
+                    <button onClick={() => handleEditService(service)} className="flex-1 flex items-center justify-center gap-2 text-xs font-bold text-purple-500/60 hover:text-purple-400 border border-purple-500/10 hover:border-purple-500/40 py-2.5 rounded-xl transition-all"><Icon.Edit /> Edit</button>
+                    <button onClick={() => deleteService(service.id)} className="px-4 flex items-center justify-center gap-2 text-xs font-bold text-red-500/60 hover:text-red-500 border border-red-500/10 hover:border-red-500/40 py-2.5 rounded-xl transition-all"><Icon.Delete /></button>
+                  </div>
+                </div>
+              )) : <p className="text-gray-600 text-center col-span-full py-10">No services added yet.</p>}
+            </div>
+          </div>
+        )}
+
+        {/* ══════════════════ BLOGS TAB ══════════════════ */}
+        {activeTab === 'blogs' && (
+          <div>
+            <div className="flex items-center justify-between mb-8">
+              <SectionHeader title={editBlogId ? "Edit Blog" : "Add New Blog"} subtitle="Blog Management" accent="text-emerald-400" />
+              {editBlogId && (
+                <button onClick={resetBlogForm} className="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl text-sm font-bold text-white transition-all">Cancel Edit</button>
+              )}
+            </div>
+
+            <form onSubmit={handleAddOrUpdateBlog} className={`bg-white/[0.02] backdrop-blur-xl border ${editBlogId ? 'border-emerald-500/50 shadow-[0_0_30px_rgba(16,185,129,0.15)]' : 'border-white/[0.08]'} rounded-3xl p-8 mb-12 space-y-6 transition-all duration-500`}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Blog Title</label>
+                  <input type="text" placeholder="e.g. 10 Tips for SEO" className="w-full p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-white outline-none focus:border-emerald-500/60 transition-colors" value={blogForm.title} onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })} required />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Cover Image {editBlogId ? "(Leave blank to keep existing)" : "*"}</p>
+                  <input type="file" accept="image/*" className="w-full text-sm text-gray-500 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:bg-emerald-500/10 file:text-emerald-400 cursor-pointer" onChange={(e) => setBlogImage(e.target.files[0])} required={!editBlogId} />
+                </div>
+              </div>
+              <div>
+                <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Blog Content (Markdown/Text)</label>
+                <textarea rows="6" placeholder="Write your blog post here..." className="w-full p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-white outline-none focus:border-emerald-500/60 resize-none transition-colors" value={blogForm.content} onChange={(e) => setBlogForm({ ...blogForm, content: e.target.value })} required />
+              </div>
+              <button type="submit" disabled={isUploading} className={`w-full ${editBlogId ? 'bg-gradient-to-r from-teal-500 to-cyan-500' : 'bg-gradient-to-r from-emerald-500 to-teal-600'} hover:opacity-90 p-4 rounded-2xl font-bold flex items-center justify-center gap-2 text-white`}>
+                {isUploading ? 'Saving...' : editBlogId ? '✓ Save Changes' : <><Icon.Upload /> Publish Blog</>}
+              </button>
+            </form>
+
+            <SectionHeader title={`All Blogs (${blogs.length})`} subtitle="Manage Articles" accent="text-emerald-400" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {blogs.length > 0 ? blogs.map((blog) => (
+                <div key={blog.id} className="group bg-white/[0.02] backdrop-blur-xl border border-white/[0.08] rounded-2xl overflow-hidden hover:border-emerald-500/30 transition-all duration-300">
+                  <div className="relative overflow-hidden h-40">
+                    <img src={blog.image_url} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    <span className="absolute bottom-3 left-3 text-[10px] text-gray-300">
+                      📅 {new Date(blog.created_at).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-bold text-white mb-2 line-clamp-1">{blog.title}</h3>
+                    <p className="text-xs text-gray-400 line-clamp-2 mb-4">{blog.content}</p>
+                    <div className="flex items-center gap-3 pt-4 border-t border-white/[0.05]">
+                      <button onClick={() => handleEditBlog(blog)} className="flex-1 flex items-center justify-center gap-2 text-xs font-bold text-emerald-500/60 hover:text-emerald-400 border border-emerald-500/10 hover:border-emerald-500/40 py-2.5 rounded-xl transition-all"><Icon.Edit /> Edit</button>
+                      <button onClick={() => deleteBlog(blog.id)} className="px-4 flex items-center justify-center gap-2 text-xs font-bold text-red-500/60 hover:text-red-500 border border-red-500/10 hover:border-red-500/40 py-2.5 rounded-xl transition-all"><Icon.Delete /></button>
+                    </div>
+                  </div>
+                </div>
+              )) : <p className="text-gray-600 text-center col-span-full py-10">No blogs published yet.</p>}
+            </div>
           </div>
         )}
       </div>
