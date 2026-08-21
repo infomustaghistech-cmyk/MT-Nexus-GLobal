@@ -33,9 +33,9 @@ const StatCard = ({ label, value, gradient, icon: IconComp }) => (
 );
 
 const SectionHeader = ({ title, subtitle, accent }) => (
-  <div className="mb-8">
-    <div className={`inline-block text-xs font-bold uppercase tracking-[0.25em] ${accent} mb-2`}>✦ {subtitle}</div>
-    <h2 className="text-2xl font-bold text-white">{title}</h2>
+  <div className="mb-6 md:mb-8">
+    <div className={`inline-block text-[10px] md:text-xs font-bold uppercase tracking-[0.25em] ${accent} mb-2`}>✦ {subtitle}</div>
+    <h2 className="text-xl md:text-2xl font-bold text-white">{title}</h2>
     <div className="h-[1px] w-full bg-white/[0.06] mt-4" />
   </div>
 );
@@ -303,18 +303,18 @@ const Admin = () => {
   if (!isAuthenticated) {
     // ... Login form remains exactly the same ...
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#050505]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#050505] px-4">
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] h-auto md:h-[500px] bg-cyan-500/10 rounded-full blur-[100px]" />
-          <form onSubmit={handleLogin} className="relative bg-[#0a0a0a] border border-white/10 p-4 md:p-10 rounded-3xl w-full max-w-md shadow-2xl z-10">
-            <div className="text-center mb-8">
-              <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold shadow-lg">A</div>
-              <h2 className="text-2xl font-bold text-white">Admin Access</h2>
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] h-[300px] md:h-[500px] bg-cyan-500/10 rounded-full blur-[100px]" />
+          <form onSubmit={handleLogin} className="relative bg-[#0a0a0a] border border-white/10 p-6 md:p-10 rounded-3xl w-full max-w-md shadow-2xl z-10">
+            <div className="text-center mb-6 md:mb-8">
+              <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white text-xl md:text-2xl font-bold shadow-lg">A</div>
+              <h2 className="text-xl md:text-2xl font-bold text-white">Admin Access</h2>
             </div>
             <div className="space-y-4">
-              <input type="text" placeholder="Username" className="w-full p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-white outline-none focus:border-cyan-500/60 transition-colors" onChange={(e) => setLoginCreds({ ...loginCreds, username: e.target.value })} required />
-              <input type="password" placeholder="Password" className="w-full p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-white outline-none focus:border-cyan-500/60 transition-colors" onChange={(e) => setLoginCreds({ ...loginCreds, password: e.target.value })} required />
-              <button type="submit" className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 p-4 rounded-2xl font-bold text-white transition-all hover:opacity-90 mt-2">Login to Dashboard</button>
+              <input type="text" placeholder="Username" className="w-full p-3.5 md:p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-white outline-none focus:border-cyan-500/60 transition-colors" onChange={(e) => setLoginCreds({ ...loginCreds, username: e.target.value })} required />
+              <input type="password" placeholder="Password" className="w-full p-3.5 md:p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-white outline-none focus:border-cyan-500/60 transition-colors" onChange={(e) => setLoginCreds({ ...loginCreds, password: e.target.value })} required />
+              <button type="submit" className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 p-3.5 md:p-4 rounded-2xl font-bold text-white transition-all hover:opacity-90 mt-2">Login to Dashboard</button>
             </div>
           </form>
         </div>
@@ -334,28 +334,28 @@ const Admin = () => {
     <div className="min-h-screen bg-[#050a15] text-white">
       {/* Top Navbar */}
       <div className="sticky top-0 z-40 bg-[#050a15]/90 backdrop-blur-xl border-b border-white/[0.08]">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center text-white text-sm font-bold">A</div>
-            <span className="font-bold text-white tracking-tight">Admin Dashboard</span>
+        <div className="max-w-7xl mx-auto px-4 md:px-10 h-16 md:h-20 flex items-center justify-between">
+          <div className="flex items-center gap-2 md:gap-3">
+            <div className="w-7 h-7 md:w-8 md:h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg md:rounded-xl flex items-center justify-center text-white text-xs md:text-sm font-bold">A</div>
+            <span className="font-bold text-white tracking-tight text-sm md:text-base">Admin Dashboard</span>
           </div>
-          <button onClick={() => navigate('/projects')} className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors text-sm"><Icon.Eye /> View Portfolio</button>
+          <button onClick={() => navigate('/projects')} className="flex items-center gap-1 md:gap-2 text-gray-500 hover:text-white transition-colors text-xs md:text-sm"><Icon.Eye /> <span className="hidden md:inline">View Portfolio</span></button>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 md:py-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-10 py-6 md:py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-10">
           <StatCard label="Total Projects" value={allProjects.length} gradient="from-cyan-400 to-blue-500" icon={Icon.Projects} />
           <StatCard label="Uploaded Reviews" value={feedbacks.length} gradient="from-amber-400 to-orange-500" icon={Icon.Feedback} />
           <StatCard label="Inquiries" value={messages.length} gradient="from-blue-400 to-indigo-500" icon={Icon.Messages} />
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap gap-1 bg-white/[0.03] border border-white/[0.07] rounded-2xl p-1 mb-10 w-fit">
+        <div className="flex overflow-x-auto gap-1 bg-white/[0.03] border border-white/[0.07] rounded-2xl p-1 mb-8 md:mb-10 w-full md:w-fit no-scrollbar">
           {tabs.map((tab) => (
-            <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-medium transition-all ${activeTab === tab.id ? 'bg-white/10 text-white shadow-sm' : 'text-gray-600 hover:text-gray-400'}`}>
+            <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`flex items-center gap-2 px-4 md:px-5 py-2 md:py-2.5 whitespace-nowrap rounded-xl text-xs md:text-sm font-medium transition-all ${activeTab === tab.id ? 'bg-white/10 text-white shadow-sm' : 'text-gray-600 hover:text-gray-400'}`}>
               <tab.icon /> {tab.label}
-              {tab.badge > 0 && <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-white/10 ${tab.color}`}>{tab.badge}</span>}
+              {tab.badge > 0 && <span className={`text-[9px] md:text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-white/10 ${tab.color}`}>{tab.badge}</span>}
             </button>
           ))}
         </div>
@@ -371,7 +371,7 @@ const Admin = () => {
               )}
             </div>
 
-            <form onSubmit={handleAddOrUpdateProject} className={`bg-[#0a0a0a] border ${editProjectId ? 'border-cyan-500/50 shadow-[0_0_30px_rgba(34,211,238,0.15)]' : 'border-white/[0.07]'} rounded-3xl p-8 mb-12 space-y-6 transition-all duration-500`}>
+            <form onSubmit={handleAddOrUpdateProject} className={`bg-[#0a0a0a] border ${editProjectId ? 'border-cyan-500/50 shadow-[0_0_30px_rgba(34,211,238,0.15)]' : 'border-white/[0.07]'} rounded-3xl p-5 md:p-8 mb-12 space-y-6 transition-all duration-500`}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Category</label>
@@ -443,7 +443,7 @@ const Admin = () => {
           <div>
             <SectionHeader title="Upload Review Screenshot" subtitle="Visual Testimonials" accent="text-amber-400" />
             
-            <form onSubmit={handleAddFeedback} className="bg-[#0a0a0a] border border-white/[0.07] rounded-3xl p-8 mb-12 space-y-6">
+            <form onSubmit={handleAddFeedback} className="bg-[#0a0a0a] border border-white/[0.07] rounded-3xl p-5 md:p-8 mb-12 space-y-6">
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
@@ -544,7 +544,7 @@ const Admin = () => {
               )}
             </div>
 
-            <form onSubmit={handleAddOrUpdateService} className={`bg-white/[0.02] backdrop-blur-xl border ${editServiceId ? 'border-purple-500/50 shadow-[0_0_30px_rgba(168,85,247,0.15)]' : 'border-white/[0.08]'} rounded-3xl p-8 mb-12 space-y-6 transition-all duration-500`}>
+            <form onSubmit={handleAddOrUpdateService} className={`bg-white/[0.02] backdrop-blur-xl border ${editServiceId ? 'border-purple-500/50 shadow-[0_0_30px_rgba(168,85,247,0.15)]' : 'border-white/[0.08]'} rounded-3xl p-5 md:p-8 mb-12 space-y-6 transition-all duration-500`}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Service Name</label>
@@ -593,7 +593,7 @@ const Admin = () => {
               )}
             </div>
 
-            <form onSubmit={handleAddOrUpdateBlog} className={`bg-white/[0.02] backdrop-blur-xl border ${editBlogId ? 'border-emerald-500/50 shadow-[0_0_30px_rgba(16,185,129,0.15)]' : 'border-white/[0.08]'} rounded-3xl p-8 mb-12 space-y-6 transition-all duration-500`}>
+            <form onSubmit={handleAddOrUpdateBlog} className={`bg-white/[0.02] backdrop-blur-xl border ${editBlogId ? 'border-emerald-500/50 shadow-[0_0_30px_rgba(16,185,129,0.15)]' : 'border-white/[0.08]'} rounded-3xl p-5 md:p-8 mb-12 space-y-6 transition-all duration-500`}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className="text-xs text-gray-500 uppercase tracking-wider mb-2 block">Blog Title</label>
