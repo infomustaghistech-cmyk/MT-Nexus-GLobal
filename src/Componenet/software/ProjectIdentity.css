@@ -1,0 +1,14 @@
+.project-identity { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 200px; padding: 28px; border-radius: 12px; background: #fff; color: #0b1d36; }
+.project-identity img { display: block; max-width: 100%; height: auto; object-fit: contain; }
+.project-identity__cure { width: 250px; max-height: 150px; }
+.project-identity__talabat { width: 220px; max-height: 80px; }
+.project-identity__transpo { font-family: Inter, system-ui, sans-serif; font-size: clamp(28px, 3vw, 40px); font-weight: 800; letter-spacing: -.045em; }
+.project-identity__pair { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 22px; }
+.project-identity__pair img { width: 155px; max-height: 35px; }
+.project-identity__pair > span { color: #94a3b8; font-size: 20px; }
+.project-identity--compact { min-height: 76px; justify-content: flex-start; padding: 16px; border: 1px solid #e5eaf1; border-radius: 8px; }
+.project-identity--compact .project-identity__cure { width: 104px; max-height: 52px; }
+.project-identity--compact .project-identity__talabat { width: 115px; max-height: 40px; }
+.project-identity--compact .project-identity__transpo { font-size: 24px; }
+.project-identity--compact .project-identity__pair { gap: 12px; }
+.project-identity--compact .project-identity__pair img { width: 95px; max-height: 24px; }

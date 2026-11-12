@@ -1,0 +1,6 @@
+CureVirtual: original project asset from curevirtual-2/public/images/logo/Asset2.png.
+TranspoPilot: native wordmark using the original application's text branding from trans_Front/src/components/Header.tsx.
+Geotab: original SVG from https://www.geotab.com/.
+Samsara: original SVG from https://www.samsara.com/.
+Talabat: https://www.talabat.com/assets/images/remix-logo.svg.
+Integration marks identify the technologies in the project, not an endorsement or partnership.

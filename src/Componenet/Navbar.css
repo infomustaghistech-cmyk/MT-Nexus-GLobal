@@ -1,0 +1,58 @@
+.nexus-navbar { top: 0; width: 100%; }
+.nexus-navbar__shell {
+  border-bottom: 1px solid #e2e8f0;
+  background: #fbfcfe;
+  box-shadow: 0 1px 0 rgb(255 255 255 / 80%);
+}
+.nexus-navbar__shell--solid { box-shadow: 0 6px 24px -12px rgb(8 20 42 / 22%); }
+.nexus-navbar__content { height: 84px; max-width: 1320px; padding-inline: 40px; }
+.nexus-nav-link {
+  height: 44px;
+  padding-inline: 16px;
+  border-radius: 6px;
+  background: transparent;
+  color: #172536;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.nexus-nav-link:hover { background: #f0f4f9; color: #0b1728; }
+.nexus-nav-link--active { background: transparent; color: #0b1728; }
+.nexus-nav-link > span:last-child:not(:first-child) {
+  height: 2px;
+  bottom: 1px;
+  left: 16px;
+  right: 16px;
+  background: #2563eb;
+}
+.nexus-navbar__cta {
+  height: 42px;
+  gap: 16px;
+  padding-inline: 20px;
+  border: 1px solid #142c4d;
+  border-radius: 7px;
+  background: #112745;
+  box-shadow: 0 2px 4px rgb(15 23 42 / 8%);
+  font-size: 12px;
+}
+.nexus-navbar__cta:hover { background: #1c416f; }
+.nexus-navbar__cta > span { color: #a5c8f5; }
+.nexus-navbar__toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 7px;
+  border-color: #e2e8f0;
+  background: #f5f7fa;
+}
+.nexus-navbar__status { display: none; }
+.nexus-navbar__shell > .absolute.top-full > div {
+  border-top: 1px solid #e2e8f0;
+  box-shadow: 0 24px 48px -24px rgb(8 20 42 / 30%);
+}
+@media (min-width: 1024px) {
+  .nexus-navbar__content { grid-template-columns: 1fr auto auto; gap: 32px; }
+  .nexus-navbar__actions { border-left: 1px solid #dfe5ee; padding-left: 28px; }
+}
+@media (max-width: 639px) {
+  .nexus-navbar__content { height: 76px; padding-inline: 22px; }
+}

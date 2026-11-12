@@ -1,0 +1,28 @@
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 8px 14px;
+  background: transparent;
+  vertical-align: middle;
+}
+
+.brand-logo picture { display: block; }
+.brand-logo img {
+  display: block;
+  width: 86px;
+  height: auto;
+  object-fit: contain;
+}
+
+.brand-logo--hero { padding: 20px 28px; }
+.brand-logo--hero img { width: clamp(180px, 22vw, 260px); }
+.brand-logo--footer { padding: 14px 22px; }
+.brand-logo--footer img { width: 152px; }
+.brand-logo--header { padding: 0; }
+.brand-logo--header img { width: 66px; }
+
+@media (min-width: 640px) {
+  .brand-logo--header img { width: 74px; }
+}

@@ -1,0 +1,18 @@
+Real stock photographs used as service illustrations, not Nexus Global project screenshots.
+
+Web & Platform Engineering: web-development-photo.webp
+https://images.unsplash.com/photo-1461749280684-dccba630e2f6
+
+Commerce Engineering: commerce-photo.webp
+https://images.unsplash.com/photo-1556742049-0cfed4f6a45d
+
+UI/UX & Digital Experience: product-design-photo.webp
+https://images.unsplash.com/photo-1581291518857-4e27b48ff24e
+
+Technology tabs:
+Data analysis: technology-data.webp
+https://unsplash.com/photos/eveI7MOcSmw
+https://images.unsplash.com/photo-1599658880436-c61792e70672
+Cloud infrastructure: technology-cloud.webp
+https://images.unsplash.com/photo-1558494949-ef010cbdcc31
+Web and mobile tabs reuse the local service photographs documented above and in mobile-product-photo-source.txt.

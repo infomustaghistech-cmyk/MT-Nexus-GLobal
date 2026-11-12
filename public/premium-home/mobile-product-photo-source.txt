@@ -1,0 +1,5 @@
+Asset: mobile-product-photo.webp
+Source: https://unsplash.com/photos/a-cell-phone-sitting-on-top-of-a-table-next-to-a-clock-9wCoNLKhPc4
+Original: https://images.unsplash.com/photo-1646307202169-b2b5a8b3eb8c
+Use: illustrative smartphone photograph for the mobile development service.
+This is stock imagery, not a Nexus Global client project.
